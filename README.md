@@ -4,8 +4,8 @@ With the objective of create new items composed by this same stock items, I am u
 The goal is also ensure the quality of the project by making tests.
 
 PLANING (beeing increasing and updating by the time):
--> Create the models and its tests, to remember basics of OOP
--> Insert anotations of spring, transforming the models, also, in Entities
--> Database things (?)
+- Create the models and its tests, to remember basics of OOP
+- Insert anotations of spring, transforming the models, also, in Entities
+- Database things (?)
 
-**** I WOULD BE GRATEFUL FOR REVIEWS OR SUGGESTIONS FOR IMPROVEMENT: sabrinakappann@gmail.com ****
+##### **** I WOULD BE GRATEFUL FOR REVIEWS OR SUGGESTIONS FOR IMPROVEMENT: sabrinakappann@gmail.com ****
