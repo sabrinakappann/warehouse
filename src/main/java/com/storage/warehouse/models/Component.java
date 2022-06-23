@@ -5,17 +5,18 @@ import java.util.List;
 
 public class Component implements Item{
 
-    BigDecimal price;
-    Integer code;
-    String name;
-    String description;
-    private List<Composition> compositions;
+    private BigDecimal price;
+    private Integer code;
+    private String name;
+    private String description;
+    private List<Composition> compositionsWithThisComponent;
 
-    public Component(BigDecimal price, Integer code, String name, String description){
-        this.price = price;
-        this.code = code;
-        this.name = name;
-        this.description = description;
+    public Component(BigDecimal price, Integer code, String name, String description, List<Composition> compositionsWithThisComponent){
+        set_price(price);
+        set_code(code);
+        set_name(name);
+        set_description(description);
+        this.compositionsWithThisComponent = compositionsWithThisComponent;
     }
 
     public void set_price(BigDecimal price){
@@ -58,8 +59,12 @@ public class Component implements Item{
         return this.description;
     };
 
-    public List<Composition> getCompositions(){
-        return this.compositions;
+    public List<Composition> getCompositionsWithThisComponent(){
+        return this.compositionsWithThisComponent;
+    }
+
+    public void add_compositions_it_makes_part(Composition comp){
+        this.compositionsWithThisComponent.add(comp);
     }
 
 }
