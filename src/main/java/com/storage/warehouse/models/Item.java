@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public interface Item {
 
-    public void set_price(BigDecimal price);
+    public void set_price(String price);
 
     public Integer get_code();
 
@@ -17,5 +17,7 @@ public interface Item {
     public String get_description();
 
     public void set_description(String description);
+
+    public BigDecimal get_price();
 
 }

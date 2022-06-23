@@ -11,17 +11,27 @@ public class Component implements Item{
     private String description;
     private List<Composition> compositionsWithThisComponent;
 
-    public Component(BigDecimal price, Integer code, String name, String description, List<Composition> compositionsWithThisComponent){
-        set_price(price);
-        set_code(code);
-        set_name(name);
-        set_description(description);
-        this.compositionsWithThisComponent = compositionsWithThisComponent;
+
+    /* WHAT TO DO HERE? If I receive BigDecimal in this constructor, I imagine not being able to parse the parameter
+                        from user or db. If I use Double as price type, for this propouse is ok, nut not recomended
+                        the parse from double to BigDecimal didn't go very well, so I am receiving the price as String:
+                                    Easy to convert to BigDecimal */
+
+    public Component(String price, Integer code, String name, String description ){
+
+        this.price = new BigDecimal(price);;
+        this.set_price(price);
+        this.set_code(code);
+        this.set_name(name);
+        this.set_description(description);
+        List<Composition> compositionsWithThisComponent;
     }
 
-    public void set_price(BigDecimal price){
-        price = price.setScale(2, BigDecimal.ROUND_HALF_UP);
-        this.price = price;
+    public void set_price(String price){
+
+        BigDecimal price2 = new BigDecimal(price); // str -> BigDecimal
+        price2 = price2.setScale(2, BigDecimal.ROUND_HALF_UP); // round to .00
+        this.price = price2;
     };
 
 
@@ -60,11 +70,11 @@ public class Component implements Item{
     };
 
     public List<Composition> getCompositionsWithThisComponent(){
-        return this.compositionsWithThisComponent;
+        return compositionsWithThisComponent;
     }
 
     public void add_compositions_it_makes_part(Composition comp){
-        this.compositionsWithThisComponent.add(comp);
+        compositionsWithThisComponent.add(comp);
     }
 
 }
