@@ -1,10 +1,7 @@
 package com.storage.warehouse.models;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Composition extends Item {
 
@@ -45,4 +42,13 @@ public class Composition extends Item {
         return total;
     }
 
+    @Override
+    public String toString() {
+        String message = "";
+        Iterator<Item> itemsIterator = items.iterator();
+        while (itemsIterator.hasNext()) {
+            message += itemsIterator.next().toString();
+        }
+        return message;
+    }
 }

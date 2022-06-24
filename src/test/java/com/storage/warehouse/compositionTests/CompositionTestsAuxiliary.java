@@ -42,8 +42,8 @@ public class CompositionTestsAuxiliary {
     Item component3 = new Component( price3,  code3,  name3,  description3,  qtd3);
     Item component4 = new Component( price4,  code4,  name4,  description4,  qtd4);
 
-    Composition composition1 = this.createCompositionFromListOfComponents();
-    Composition composition2= this.createCompositionFromListOfComponents();
+    public Composition composition1 = this.createTestCompositionFromListOfTestComponents();
+    public Composition composition2= this.createTestCompositionFromListOfTestComponents();
 
     public CompositionTestsAuxiliary() {
         this.price1 = price1;
@@ -76,7 +76,7 @@ public class CompositionTestsAuxiliary {
         return new Composition(code1, name1, description1, component1);
     }
 
-    public Composition createCompositionFromListOfComponents(){
+    public Composition createTestCompositionFromListOfTestComponents(){
         List<Item> components = new ArrayList<Item>();
         components.add(component1);
         components.add(component2);
@@ -86,7 +86,7 @@ public class CompositionTestsAuxiliary {
     }
 
     public Composition createCompositionFromOneCompositionItem(){
-        Composition composition1 = this.createCompositionFromListOfComponents();
+        Composition composition1 = this.createTestCompositionFromListOfTestComponents();
         return new Composition(code1, name1, description1, composition1);
     }
 

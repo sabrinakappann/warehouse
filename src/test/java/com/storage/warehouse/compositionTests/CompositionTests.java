@@ -11,7 +11,7 @@ public class CompositionTests {
     CompositionTestsAuxiliary aux = new CompositionTestsAuxiliary();
 
     Composition compositionWithOneComponent = aux.createCompositionFromOneComponent();
-    Composition compositionWithMoreThenOneComponent = aux.createCompositionFromListOfComponents();
+    Composition compositionWithMoreThenOneComponent = aux.createTestCompositionFromListOfTestComponents();
     Composition compositionFRomListOfCompositions= aux.createCompositionFromListOfCompositionItem();
     @Test
     public void testIfAllComponentsAreInCompositionCreatedWithOneItem(){
