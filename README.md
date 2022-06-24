@@ -8,7 +8,7 @@ PLANING (beeing increasing and updating by the time):
 - Be able to acess a home page listing all of my products 
   - (if possible, already on DB. Otherwise, in memory to learn some more things)
 - Insert anotations of spring, transforming the models, also, in Entities
-- Database things (?)
+- We'll see...
 
 ##### **** I WOULD BE GRATEFUL FOR REVIEWS OR SUGGESTIONS FOR IMPROVEMENT: sabrinakappann@gmail.com ****
 
