@@ -1,23 +1,40 @@
 package com.storage.warehouse.models;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class Composition extends Component {
+public class Composition extends Item {
 
-    private Map<Item, Integer> itemsQuantity;
+    private List<Item> items;
 
-    public Composition(Double price, Integer code, String name, String description) {
-        super(price, code, name, description );
-        this.itemsQuantity = new HashMap<Item,Integer>();
+    // creating with a single item
+    public Composition(Integer code, String name, String description, Item item){
+        super(code, name, description);
+        this.items = new ArrayList<Item>();
+        this.addItem(item);
     }
 
-    public Map<Item, Integer> getItemsQuantity() {
-        return this.itemsQuantity;
+    // creating with list of items
+    public Composition(Integer code, String name, String description, List<Item> items){
+        super(code, name, description);
+        this.items = items;
     }
 
-    public void addItem(Item item, Integer quantity){
-        this.itemsQuantity.put(item, quantity);
+    public void addItem(Item item){
+        this.items.add(item);
+    }
+
+    public void removeItem(Item item){
+        this.items.remove(item);
+    }
+
+    public BigDecimal getCompositionUnitPrice(){
+        BigDecimal total = BigDecimal.valueOf(0);
+        this.items.forEach(item->total.add(item.getTotalItemPrice()));
+        return total;
     }
 
 }
