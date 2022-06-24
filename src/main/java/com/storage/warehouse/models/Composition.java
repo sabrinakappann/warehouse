@@ -6,8 +6,8 @@ public class Composition extends Component {
 
     private HashMap<Item, Integer> items_quantity;
 
-    public Composition(HashMap<Item, Integer> items_quantity, String price, Integer code, String name, String description) {
-        super();
+    public Composition(HashMap<Item, Integer> items_quantity, Double price, Integer code, String name, String description) {
+        super(price, code, name, description );
         this.items_quantity = items_quantity;
     }
 

@@ -1,5 +1,7 @@
 package com.storage.warehouse.models;
 
+import com.storage.warehouse.utils.Conversion;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -17,9 +19,8 @@ public class Component implements Item{
                         the parse from double to BigDecimal didn't go very well, so I am receiving the price as String:
                                     Easy to convert to BigDecimal */
 
-    public Component(String price, Integer code, String name, String description ){
-
-        this.price = new BigDecimal(price);;
+    public Component(Double price, Integer code, String name, String description ){
+        
         this.set_price(price);
         this.set_code(code);
         this.set_name(name);
@@ -27,11 +28,8 @@ public class Component implements Item{
         List<Composition> compositionsWithThisComponent;
     }
 
-    public void set_price(String price){
-
-        BigDecimal price2 = new BigDecimal(price); // str -> BigDecimal
-        price2 = price2.setScale(2, BigDecimal.ROUND_HALF_UP); // round to .00
-        this.price = price2;
+    public void set_price(Double price){
+        this.price = Conversion.doubleToBidDecimal(price);
     };
 
 

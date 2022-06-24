@@ -5,9 +5,8 @@ import com.storage.warehouse.models.Item;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.util.Random;
 
-import static com.storage.warehouse.MyUtils.random_int;
+import static com.storage.warehouse.TestsUtils.random_int;
 
 public class ItemsTests {
 
