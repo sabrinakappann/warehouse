@@ -1,4 +1,4 @@
-package com.storage.warehouse;
+package com.storage.warehouse.common;
 
 import java.util.Map;
 import java.util.Random;

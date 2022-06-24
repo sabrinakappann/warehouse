@@ -1,26 +1,23 @@
 package com.storage.warehouse.models;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Composition extends Component {
 
-    private HashMap<Item, Integer> items_quantity;
+    private Map<Item, Integer> itemsQuantity;
 
-    public Composition(HashMap<Item, Integer> items_quantity, Double price, Integer code, String name, String description) {
+    public Composition(Double price, Integer code, String name, String description) {
         super(price, code, name, description );
-        this.items_quantity = items_quantity;
+        this.itemsQuantity = new HashMap<Item,Integer>();
     }
 
-    public HashMap<Item, Integer> getItems_quantity() {
-        return this.items_quantity;
+    public Map<Item, Integer> getItemsQuantity() {
+        return this.itemsQuantity;
     }
 
-    public void setItems_quantity(Item item, Integer quantity){
-        if (items_quantity.containsKey(item)){
-            Integer current_quantity = this.getItems_quantity().get(item);
-            items_quantity.put(item, current_quantity+quantity);
-        }else{
-            items_quantity.put(item, quantity);
-        }
+    public void addItem(Item item, Integer quantity){
+        this.itemsQuantity.put(item, quantity);
     }
+
 }

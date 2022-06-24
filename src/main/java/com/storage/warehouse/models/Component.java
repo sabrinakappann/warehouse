@@ -21,49 +21,49 @@ public class Component implements Item{
 
     public Component(Double price, Integer code, String name, String description ){
         
-        this.set_price(price);
-        this.set_code(code);
-        this.set_name(name);
-        this.set_description(description);
+        this.setPrice(price);
+        this.setCode(code);
+        this.setName(name);
+        this.setDescription(description);
         List<Composition> compositionsWithThisComponent;
     }
 
-    public void set_price(Double price){
+    public void setPrice(Double price){
         this.price = Conversion.doubleToBidDecimal(price);
     };
 
 
-    public BigDecimal get_price(){
+    public BigDecimal getPrice(){
         return this.price;
     };
 
 
-    public void set_code(Integer code){
+    public void setCode(Integer code){
         this.code = code;
     };
 
 
-    public void set_name(String name){
+    public void setName(String name){
         this.name = name;
     };
 
 
-    public void set_description(String description){
+    public void setDescription(String description){
         this.description = description;
     };
 
 
-    public Integer get_code(){
+    public Integer getCode(){
         return this.code;
     };
 
 
-    public String get_name(){
+    public String getName(){
         return this.name;
     };
 
 
-    public String get_description(){
+    public String getDescription(){
         return this.description;
     };
 
@@ -71,7 +71,7 @@ public class Component implements Item{
         return compositionsWithThisComponent;
     }
 
-    public void add_compositions_it_makes_part(Composition comp){
+    public void addCompositionsItBelongs(Composition comp){
         compositionsWithThisComponent.add(comp);
     }
 

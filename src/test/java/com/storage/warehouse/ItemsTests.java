@@ -4,9 +4,7 @@ import com.storage.warehouse.models.Component;
 import com.storage.warehouse.models.Item;
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
-
-import static com.storage.warehouse.TestsUtils.random_int;
+import static com.storage.warehouse.common.TestsUtils.random_int;
 
 public class ItemsTests {
 
@@ -21,11 +19,14 @@ public class ItemsTests {
         int id1 = random_int();
         int id2 = random_int();
         int id3 = random_int();
-        int id4 = random_int();
 
-        Item fonte12V = new Component(new BigDecimal("25.5"), id1, "font", "12V" );
-        Item suporteAcrilico = new Component(new BigDecimal("16"), id2, "suporte acrílico", "é feito de acrílico para suportar coisas" );
-        Item cooler = new Component(new BigDecimal("67.99"), id3, "cooler", "se resfriar é bom" );
+        Double v1 = new Double(233.12121);
+        Double v2 = new Double(0);
+        Double v3 = new Double(4);
+
+        Item fonte12V = new Component(v1, id1, "font", "12V" );
+        Item suporteAcrilico = new Component(v2, id2, "suporte acrílico", "é feito de acrílico para suportar coisas" );
+        Item cooler = new Component(v3, id3, "cooler", "se resfriar é bom" );
     }
 
 }

@@ -4,20 +4,20 @@ import java.math.BigDecimal;
 
 public interface Item {
 
-    public void set_price(String price);
+    public void setPrice(Double price);
 
-    public Integer get_code();
+    public Integer getCode();
 
-    public void set_code(Integer code);
+    public void setCode(Integer code);
 
-    public String get_name();
+    public String getName();
 
-    public void set_name(String name);
+    public void setName(String name);
 
-    public String get_description();
+    public String getDescription();
 
-    public void set_description(String description);
+    public void setDescription(String description);
 
-    public BigDecimal get_price();
+    public BigDecimal getPrice();
 
 }
