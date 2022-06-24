@@ -23,6 +23,14 @@ public class Composition extends Item {
         this.items = items;
     }
 
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
     public void addItem(Item item){
         this.items.add(item);
     }
