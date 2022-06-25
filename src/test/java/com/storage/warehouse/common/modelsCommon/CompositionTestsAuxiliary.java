@@ -9,67 +9,76 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompositionTestsAuxiliary {
-    // Auxiliary class to define named values to be used in CompositionTests, among with auxiliary methods
-    // To create Compositions or Components in specific ways
+    /* Auxiliary class to define named values to be used in CompositionTests, among with auxiliary methods to
+        create Compositions or Components in specific ways. I know it is too hard coded and not intuitive to use,
+        but it is usefull for now (junit better tests coming soon) */
 
-    BigDecimal price1 = new BigDecimal(0.1);
-    BigDecimal price2 = new BigDecimal(1.0);
-    BigDecimal price3 = new BigDecimal(22.22);
-    BigDecimal price4 = new BigDecimal(40.4040);
+    public BigDecimal price1;
+    public BigDecimal price2;
+    public BigDecimal price3;
+    public BigDecimal price4;
 
-    Integer code1 = Integer.valueOf(1);
-    Integer code2 = Integer.valueOf(2);
-    Integer code3 = Integer.valueOf(3);
-    Integer code4 = Integer.valueOf(4);
+    public Integer code1;
+    public Integer code2;
+    public Integer code3;
+    public Integer code4;
 
-    String name1 = "name1";
-    String name2 = "name2";
-    String name3 = "name3";
-    String name4 = "name4";
+    public String name1;
+    public String name2;
+    public String name3;
+    public String name4;
 
-    String description1 = "description1";
-    String description2 = "description2";
-    String description3 = "description3";
-    String description4 = "description4";
+    public String description1;
+    public String description2;
+    public String description3;
+    public String description4;
 
-    Integer qtd1 = 10;
-    Integer qtd2 = 100;
-    Integer qtd3 = 1000;
-    Integer qtd4 = 10000;
+    public Integer qtd1;
+    public Integer qtd2;
+    public Integer qtd3;
+    public Integer qtd4;
 
-    public Item component1 = new Component( price1,  code1,  name1,  description1,  qtd1);
-    public Item component2 = new Component( price2,  code2,  name2,  description2,  qtd2);
-    public Item component3 = new Component( price3,  code3,  name3,  description3,  qtd3);
-    public Item component4 = new Component( price4,  code4,  name4,  description4,  qtd4);
+    public Item component1;
+    public Item component2;
+    public Item component3;
+    public Item component4;
 
-    public Composition composition1 = this.createTestCompositionFromListOfTestComponents();
-    public Composition composition2= this.createTestCompositionFromListOfTestComponents();
+    public Composition composition1;
+    public Composition composition2;
 
     public CompositionTestsAuxiliary() {
-        this.price1 = price1;
-        this.price2 = price2;
-        this.price3 = price3;
-        this.price4 = price4;
-        this.code1 = code1;
-        this.code2 = code2;
-        this.code3 = code3;
-        this.code4 = code4;
-        this.name1 = name1;
-        this.name2 = name2;
-        this.name3 = name3;
-        this.name4 = name4;
-        this.description1 = description1;
-        this.description2 = description2;
-        this.description3 = description3;
-        this.description4 = description4;
-        this.qtd1 = qtd1;
-        this.qtd2 = qtd2;
-        this.qtd3 = qtd3;
-        this.qtd4 = qtd4;
-        this.component1 = component1;
-        this.component2 = component2;
-        this.component3 = component3;
-        this.component4 = component4;
+        qtd1 = 10;
+        qtd2 = 100;
+        qtd3 = 1000;
+        this.qtd4 = 10000;
+
+        this.name1 = "name1";
+        this.name2 = "name2";
+        this.name3 = "name3";
+        this.name4 = "name4";
+
+        this.price1 = new BigDecimal("0.1");
+        this.price2 = new BigDecimal("1.0");
+        this.price3 = new BigDecimal("22.22");
+        this.price4 = new BigDecimal("40.4040");
+
+        code1 = 1;
+        code2 = 2;
+        code3 = 3;
+        code4 = 4;
+
+        description1 = "description1";
+        description2 = "description2";
+        description3 = "description3";
+        description4 = "description4";
+
+        component1 = new Component( price1,  code1,  name1,  description1,  qtd1);
+        component2 = new Component( price2,  code2,  name2,  description2,  qtd2);
+        component3 = new Component( price3,  code3,  name3,  description3,  qtd3);
+        component4 = new Component( price4,  code4,  name4,  description4,  qtd4);
+
+        composition1 = this.createTestCompositionFromListOfTestComponents();
+        composition2= this.createTestCompositionFromListOfTestComponents();
     }
 
     public Composition createCompositionFromOneComponent(){
