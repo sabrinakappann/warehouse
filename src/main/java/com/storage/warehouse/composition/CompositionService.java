@@ -1,14 +1,13 @@
-package com.storage.warehouse.models.services;
+package com.storage.warehouse.composition;
 
-import com.storage.warehouse.models.Component;
-import com.storage.warehouse.models.Composition;
-import com.storage.warehouse.models.Item;
+import com.storage.warehouse.component.Component;
+import com.storage.warehouse.item.Item;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompositionServices {
+public class CompositionService {
 
     public Composition createTestCompositionFromListOfTestComponents() {
         // a hard coded test method. Works :)

@@ -1,4 +1,4 @@
-package com.storage.warehouse.models;
+package com.storage.warehouse.item;
 
 
 import java.math.BigDecimal;

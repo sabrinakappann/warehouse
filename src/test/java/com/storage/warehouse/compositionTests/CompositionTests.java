@@ -1,7 +1,7 @@
-package com.storage.warehouse.modelsTests;
+package com.storage.warehouse.compositionTests;
 
-import com.storage.warehouse.common.modelsCommon.CompositionTestsAuxiliary;
-import com.storage.warehouse.models.Composition;
+import com.storage.warehouse.compositionTests.CompositionTestsAuxiliary;
+import com.storage.warehouse.composition.Composition;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

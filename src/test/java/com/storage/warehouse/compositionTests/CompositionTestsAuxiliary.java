@@ -1,8 +1,8 @@
-package com.storage.warehouse.common.modelsCommon;
+package com.storage.warehouse.compositionTests;
 
-import com.storage.warehouse.models.Component;
-import com.storage.warehouse.models.Composition;
-import com.storage.warehouse.models.Item;
+import com.storage.warehouse.component.Component;
+import com.storage.warehouse.composition.Composition;
+import com.storage.warehouse.item.Item;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
-package com.storage.warehouse.controllersTests;
+package com.storage.warehouse.itemTests;
 
-import com.storage.warehouse.common.modelsCommon.CompositionTestsAuxiliary;
-import com.storage.warehouse.models.Composition;
+import com.storage.warehouse.compositionTests.CompositionTestsAuxiliary;
+import com.storage.warehouse.composition.Composition;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

@@ -1,12 +1,13 @@
-package com.storage.warehouse.models;
+package com.storage.warehouse.component;
 
-import com.storage.warehouse.utils.Conversion;
+import com.storage.warehouse.composition.Composition;
+import com.storage.warehouse.item.Item;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Component extends Item{
+public class Component extends Item {
 
     private List<Composition> compositionsWithThisComponent;
 
