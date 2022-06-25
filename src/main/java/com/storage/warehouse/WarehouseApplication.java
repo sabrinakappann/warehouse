@@ -14,17 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
-@RestController
 public class WarehouseApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(WarehouseApplication.class, args);
-    }
-
-    @GetMapping
-    public String home() {
-        // this mappes us to http://localhost:8080/
-        return "Hello World!";
     }
 
 }

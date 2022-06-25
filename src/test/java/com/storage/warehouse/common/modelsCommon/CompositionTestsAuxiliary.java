@@ -47,9 +47,9 @@ public class CompositionTestsAuxiliary {
     public Composition composition2;
 
     public CompositionTestsAuxiliary() {
-        qtd1 = 10;
-        qtd2 = 100;
-        qtd3 = 1000;
+        this.qtd1 = 10;
+        this.qtd2 = 100;
+        this.qtd3 = 1000;
         this.qtd4 = 10000;
 
         this.name1 = "name1";
@@ -62,23 +62,23 @@ public class CompositionTestsAuxiliary {
         this.price3 = new BigDecimal("22.22");
         this.price4 = new BigDecimal("40.4040");
 
-        code1 = 1;
-        code2 = 2;
-        code3 = 3;
-        code4 = 4;
+        this.code1 = 1;
+        this.code2 = 2;
+        this.code3 = 3;
+        this.code4 = 4;
 
-        description1 = "description1";
-        description2 = "description2";
-        description3 = "description3";
-        description4 = "description4";
+        this.description1 = "description1";
+        this.description2 = "description2";
+        this.description3 = "description3";
+        this.description4 = "description4";
 
-        component1 = new Component( price1,  code1,  name1,  description1,  qtd1);
-        component2 = new Component( price2,  code2,  name2,  description2,  qtd2);
-        component3 = new Component( price3,  code3,  name3,  description3,  qtd3);
-        component4 = new Component( price4,  code4,  name4,  description4,  qtd4);
+        this.component1 = new Component( price1,  code1,  name1,  description1,  qtd1);
+        this.component2 = new Component( price2,  code2,  name2,  description2,  qtd2);
+        this.component3 = new Component( price3,  code3,  name3,  description3,  qtd3);
+        this.component4 = new Component( price4,  code4,  name4,  description4,  qtd4);
 
-        composition1 = this.createTestCompositionFromListOfTestComponents();
-        composition2= this.createTestCompositionFromListOfTestComponents();
+        this.composition1 = this.createTestCompositionFromListOfTestComponents();
+        this.composition2= this.createTestCompositionFromListOfTestComponents();
     }
 
     public Composition createCompositionFromOneComponent(){

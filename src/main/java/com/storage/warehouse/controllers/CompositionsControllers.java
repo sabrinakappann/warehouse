@@ -2,18 +2,21 @@ package com.storage.warehouse.controllers;
 import com.storage.warehouse.models.Composition;
 import com.storage.warehouse.models.services.CompositionServices;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping(path = "api/v1/composition")
 public class CompositionsControllers {
 
-    CompositionServices composition_services = new CompositionServices();
+    CompositionServices compositionServices = new CompositionServices();
 
-    @RequestMapping("/getTestComposition")
+    @GetMapping("/getTestComposition")
     public List<Composition> getTestComposition() {
-        // this mappes us to http://localhost:8080/
-        Composition composition2 = composition_services.createTestCompositionFromListOfTestComponents();
+        Composition composition2 = compositionServices.createTestCompositionFromListOfTestComponents();
         return List.of(composition2);
     }
 
