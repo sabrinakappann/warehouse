@@ -11,8 +11,6 @@ public abstract class TestsUtils {
         }
     }
 
-
-
     public static int random_int(){
         Random r = new Random();
         return r.nextInt();

@@ -2,31 +2,31 @@ package com.storage.warehouse.composition;
 
 import com.storage.warehouse.item.Item;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.*;
 
+@Entity
+@DiscriminatorValue("COMPOSITION")
+@Table(name = "COMPOSITION")
 public class Composition extends Item {
 
-    private List<Item> items;
+    @ManyToMany
+    private Set<Item> items;
 
-    // creating with a single item
-    public Composition(Integer code, String name, String description, Item item){
+    // creates without items defined
+    public Composition(Integer code, String name, String description){
         super(code, name, description);
-        this.items = new ArrayList<Item>();
-        this.addItem(item);
     }
 
-    // creating with list of items
-    public Composition(Integer code, String name, String description, List<Item> items){
-        super(code, name, description);
-        this.items = items;
-    }
-
-    public List<Item> getItems() {
+    public Set<Item> getItems() {
         return items;
     }
 
-    public void setItems(List<Item> items) {
+    public void setAllItems(Set<Item> items) {
         this.items = items;
     }
 
