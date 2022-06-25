@@ -54,3 +54,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+warehouse/src/main/resources/application.properties
+*application.properties
