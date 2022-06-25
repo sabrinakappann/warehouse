@@ -1,4 +1,4 @@
-package com.storage.warehouse.compositionTests;
+package com.storage.warehouse.common.modelsCommon;
 
 import com.storage.warehouse.models.Component;
 import com.storage.warehouse.models.Composition;
@@ -23,9 +23,9 @@ public class CompositionTestsAuxiliary {
     Integer code4 = Integer.valueOf(4);
 
     String name1 = "name1";
-    String name2 = "name1";
-    String name3 = "name1";
-    String name4 = "name1";
+    String name2 = "name2";
+    String name3 = "name3";
+    String name4 = "name4";
 
     String description1 = "description1";
     String description2 = "description2";
@@ -37,10 +37,10 @@ public class CompositionTestsAuxiliary {
     Integer qtd3 = 1000;
     Integer qtd4 = 10000;
 
-    Item component1 = new Component( price1,  code1,  name1,  description1,  qtd1);
-    Item component2 = new Component( price2,  code2,  name2,  description2,  qtd2);
-    Item component3 = new Component( price3,  code3,  name3,  description3,  qtd3);
-    Item component4 = new Component( price4,  code4,  name4,  description4,  qtd4);
+    public Item component1 = new Component( price1,  code1,  name1,  description1,  qtd1);
+    public Item component2 = new Component( price2,  code2,  name2,  description2,  qtd2);
+    public Item component3 = new Component( price3,  code3,  name3,  description3,  qtd3);
+    public Item component4 = new Component( price4,  code4,  name4,  description4,  qtd4);
 
     public Composition composition1 = this.createTestCompositionFromListOfTestComponents();
     public Composition composition2= this.createTestCompositionFromListOfTestComponents();

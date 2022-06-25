@@ -1,11 +1,9 @@
-package com.storage.warehouse.compositeControllers;
+package com.storage.warehouse.controllersTests;
 
-import com.storage.warehouse.compositionTests.CompositionTestsAuxiliary;
+import com.storage.warehouse.common.modelsCommon.CompositionTestsAuxiliary;
 import com.storage.warehouse.models.Composition;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 @Controller
 public class ItemsControllersTest {

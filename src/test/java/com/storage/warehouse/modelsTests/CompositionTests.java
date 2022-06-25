@@ -1,5 +1,6 @@
-package com.storage.warehouse.compositionTests;
+package com.storage.warehouse.modelsTests;
 
+import com.storage.warehouse.common.modelsCommon.CompositionTestsAuxiliary;
 import com.storage.warehouse.models.Composition;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,10 +14,6 @@ public class CompositionTests {
     Composition compositionWithOneComponent = aux.createCompositionFromOneComponent();
     Composition compositionWithMoreThenOneComponent = aux.createTestCompositionFromListOfTestComponents();
     Composition compositionFRomListOfCompositions= aux.createCompositionFromListOfCompositionItem();
-    @Test
-    public void testIfAllComponentsAreInCompositionCreatedWithOneItem(){
-        assert compositionWithOneComponent.getItems().contains(aux.component1); // ok... very basic tes
-    }
 
     @Test
     public void testIfAllComponentsAreInCompositionCreatedWithAFewItems(){
