@@ -16,10 +16,11 @@ public class Composition extends Item {
 
     @ManyToMany
     private Set<Item> items;
+    private BigDecimal TotalItemPrice;
 
     // creates without items defined
-    public Composition(Integer code, String name, String description){
-        super(code, name, description);
+    public Composition(String name, String description){
+        super(name, description);
     }
 
     public Set<Item> getItems() {

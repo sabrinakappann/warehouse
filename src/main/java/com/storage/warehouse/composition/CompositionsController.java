@@ -12,7 +12,6 @@ public class CompositionsController {
 
     private final CompositionService compositionService;
 
-
     // compositionService injected into this constructor -> no need to be instanciated
     @Autowired
     public CompositionsController(CompositionService compositionService) {

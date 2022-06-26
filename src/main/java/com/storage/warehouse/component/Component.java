@@ -7,7 +7,6 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import java.math.BigDecimal;
 import java.util.Set;
 
 @Entity
@@ -18,15 +17,11 @@ public class Component extends Item {
     @ManyToMany
     private Set<Composition> compositions;
 
-    // without define quantity
-    public Component(BigDecimal unitPrice, Integer code, String name, String description) {
-        super(unitPrice, code, name, description);
+    // new register -> without qtd or price
+    public Component(String name, String description){
+        super(name, description);
     }
 
-    // with quantity
-    public Component(BigDecimal unitPrice, Integer code, String name, String description, Integer quantity) {
-        super(unitPrice, code, name, description, quantity);
-    }
 
     public Set<Composition> getCompositions() {
         return this.compositions;

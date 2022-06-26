@@ -1,7 +1,5 @@
 package com.storage.warehouse.item;
 
-
-
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -30,13 +28,23 @@ public abstract class Item {
     )
     @Id
     private Long id;
-    private BigDecimal unitPrice;
+    private BigDecimal meanUnitPrice;
     private String name;
     private String description;
     private Integer quantity;
-    BigDecimal TotalItemPrice;
     private final BigDecimal initialPrice = BigDecimal.valueOf(0.0);
-    private final Integer default_quantity = 1;
+    private final Integer default_quantity = 0;
+
+
+    public Item(String name, String description) {
+        // Register an item without quantity or price
+        this.setMeanUnitPrice(this.initialPrice);
+        this.setName(name);
+        this.setDescription(description);
+        this.quantity = default_quantity;
+    }
+
+
 
     public Long getId() {
         return id;
@@ -44,10 +52,6 @@ public abstract class Item {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public void setTotalItemPrice(BigDecimal totalItemPrice) {
-        TotalItemPrice = totalItemPrice;
     }
 
     public BigDecimal getInitialPrice() {
@@ -58,42 +62,18 @@ public abstract class Item {
         return default_quantity;
     }
 
-    public Item(BigDecimal unitPrice, Integer code, String name, String description, Integer quantity) {
-        // Creates an Item with unit price and quantity setted
 
-        this.unitPrice = unitPrice;
-        this.name = name;
-        this.description = description;
-        this.setQuantity(quantity);
+
+    public void setMeanUnitPrice(BigDecimal meanUnitPrice) {
+        this.meanUnitPrice = meanUnitPrice;
     }
 
-    public Item(BigDecimal unitPrice, Integer code, String name, String description){
-        // Creates a single Item (quantity=1) with unit price
-
-        this.setUnitPrice(unitPrice);
-        this.setName(name);
-        this.setDescription(description);
-        this.quantity = default_quantity;
+    public BigDecimal getMeanUnitPrice() {
+        return this.meanUnitPrice;
     }
 
-    public Item(Integer code, String name, String description){
-        // Creates a single Item (quantity=1) with unit price=0
-        this.setUnitPrice(this.initialPrice);
-        this.setName(name);
-        this.setDescription(description);
-        this.quantity = default_quantity;
-    }
-
-    public void setUnitPrice(BigDecimal unitPrice){
-        this.unitPrice = unitPrice;
-    }
-
-    public BigDecimal getUnitPrice() {
-        return this.unitPrice;
-    }
-
-    public BigDecimal getTotalItemPrice(){
-        return this.getUnitPrice().multiply(BigDecimal.valueOf(this.getQuantity()));
+    public BigDecimal getTotalItemPrice() {
+        return this.getMeanUnitPrice().multiply(BigDecimal.valueOf(this.getQuantity()));
     }
 
     public Integer getQuantity() {
@@ -101,22 +81,21 @@ public abstract class Item {
     }
 
 
-
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
 
-    public void setDescription(String description){
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
 
-    public String getDescription(){
+    public String getDescription() {
         return this.description;
     }
 

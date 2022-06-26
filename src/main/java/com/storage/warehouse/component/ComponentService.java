@@ -1,7 +1,9 @@
 package com.storage.warehouse.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ComponentService {
 
     private final ComponentRepository componentRepository;
@@ -10,4 +12,10 @@ public class ComponentService {
     public ComponentService(ComponentRepository componentRepository) {
         this.componentRepository = componentRepository;
     }
+
+    public void createNewComponent(Component component){
+        System.out.println(component);
+        componentRepository.save(component);
+    }
+
 }
