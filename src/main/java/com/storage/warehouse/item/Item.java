@@ -44,7 +44,8 @@ public abstract class Item {
         this.quantity = default_quantity;
     }
 
-
+    public Item() {
+    }
 
     public Long getId() {
         return id;
@@ -107,8 +108,13 @@ public abstract class Item {
         }
     }
 
+    public boolean equals(Item item1, Item item2){
+        return (item1.getName() == item2.getName() && item1.getDescription() == item2.getDescription());
+    }
+
     @Override
     public String toString() {
-        return this.getQuantity() + " unidade(s) de " + getName();
+        return "name: " + this.getName() + " descr: " + this.getDescription() + " (" + this.getQuantity() + ")";
+
     }
 }

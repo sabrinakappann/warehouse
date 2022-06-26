@@ -22,6 +22,9 @@ public class Component extends Item {
         super(name, description);
     }
 
+    public Component() {
+        super();
+    }
 
     public Set<Composition> getCompositions() {
         return this.compositions;
