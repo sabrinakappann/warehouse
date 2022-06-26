@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Service // Service it is a kind of Component that I think is to the autowire onto controller works
 public class CompositionService {
@@ -21,5 +23,10 @@ public class CompositionService {
         this.compositionRepository = compositionRepository;
     }
 
+    public void createNewComposition(Map<Composition, Set<Item>> compositionAndItems){
+        System.out.println(compositionAndItems);
+        /*composition.setAllItems(items);
+        this.compositionRepository.save(composition);*/
+    }
 
 }

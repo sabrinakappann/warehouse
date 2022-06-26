@@ -1,6 +1,5 @@
 package com.storage.warehouse.component;
 
-import com.storage.warehouse.item.Item;
 import com.storage.warehouse.item.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,9 +23,9 @@ public class ComponentService {
     public void createNewComponent(Component component){
 
         List<Optional<Component>> componentsWithSameName = componentRepository.findComponentByName(component.getName());
-        List<Optional<Component>> componentsWithSameDescr = componentRepository.findComponentByDescription(component.getDescription());
+        List<Optional<Component>> componentsWithSameDescription = componentRepository.findComponentByDescription(component.getDescription());
 
-        if(componentsWithSameName.isEmpty() || componentsWithSameDescr.isEmpty()){
+        if(componentsWithSameName.isEmpty() || componentsWithSameDescription.isEmpty()){
             componentRepository.save(component);
             System.out.println("New component created: " + component.getName() + " - " + component.getDescription());
         }else{

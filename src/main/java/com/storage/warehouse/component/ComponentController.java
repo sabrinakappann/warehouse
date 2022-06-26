@@ -18,7 +18,7 @@ public class ComponentController {
         this.componentService = componentService;
     }
 
-    @PostMapping(path = "newComponent")
+    @PostMapping(path = "new")
     public void createNewComponent(@RequestBody Component component){
         componentService.createNewComponent(component);
     }
