@@ -1,0 +1,22 @@
+DTO -> transfer data between controllers and service (no acess to DB)
+Entities -> used by services to acess/controll data
+
+MVC Template Engine vs WebServices:
+
+    MVC Template Engine:
+        requisitions -> controllers -> ... -> server itself returns html pages with the data (ex: JSP)
+
+    WebServices :
+        Browser responsable for set up pages (HTML, CSS, JS) -> Browser only the structured data to mount pages
+        SPA (Single Page Application)
+        Server only returns data structure (example: JSON)
+        Rest Controllers:
+            WebServices controllers pattern
+            Same prefix for paths, actions defined by http method
+            POST != PUT -> POST always add a new, put can update
+
+    Resources = REST Controllers
+
+
+# impar = components
+# par = compositions

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class ComponentServiceTest {
 
-    private ComponentService componentService;
+    private final ComponentService componentService;
 
     @Autowired
     public ComponentServiceTest(ComponentService componentService) {

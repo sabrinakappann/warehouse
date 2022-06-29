@@ -1,6 +1,5 @@
 package com.storage.warehouse.component;
 
-import com.storage.warehouse.item.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

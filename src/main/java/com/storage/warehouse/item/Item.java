@@ -1,21 +1,15 @@
 package com.storage.warehouse.item;
-
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.Table;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.GenerationType;
-import javax.persistence.InheritanceType;
+import com.storage.warehouse.compositionItemQuantity.CompositionItemQuantity;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @DiscriminatorColumn(name = "ITEM_TYPE")
-@Table(name = "ITEM")
-public abstract class Item {
+@Table(name = "items")
+public abstract class Item implements Serializable {
 
     @SequenceGenerator(
             name = "item_sequence",
@@ -28,57 +22,38 @@ public abstract class Item {
     )
     @Id
     private Long id;
-    private BigDecimal meanUnitPrice;
+    private static final Long serialVersionUID = 1L;
+    private BigDecimal unitPrice;
+    private BigDecimal sellPrice;
     private String name;
     private String description;
-    private Integer quantity;
     private final BigDecimal initialPrice = BigDecimal.valueOf(0.0);
-    private final Integer default_quantity = 0;
 
+    @OneToMany(mappedBy = "item")
+    private List<CompositionItemQuantity> compositionItemQuantities;
 
     public Item(String name, String description) {
         // Register an item without quantity or price
-        this.setMeanUnitPrice(this.initialPrice);
+        this.setUnitPrice(this.initialPrice);
         this.setName(name);
         this.setDescription(description);
-        this.quantity = default_quantity;
     }
 
     public Item() {
+        this.setUnitPrice(this.initialPrice);
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+
+    public void setUnitPrice(BigDecimal unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
-    public BigDecimal getInitialPrice() {
-        return initialPrice;
-    }
-
-    public Integer getDefault_quantity() {
-        return default_quantity;
-    }
-
-
-
-    public void setMeanUnitPrice(BigDecimal meanUnitPrice) {
-        this.meanUnitPrice = meanUnitPrice;
-    }
-
-    public BigDecimal getMeanUnitPrice() {
-        return this.meanUnitPrice;
-    }
-
-    public BigDecimal getTotalItemPrice() {
-        return this.getMeanUnitPrice().multiply(BigDecimal.valueOf(this.getQuantity()));
-    }
-
-    public Integer getQuantity() {
-        return this.quantity;
+    public BigDecimal getUnitPrice() {
+        return this.unitPrice;
     }
 
 
@@ -100,13 +75,6 @@ public abstract class Item {
         return this.description;
     }
 
-    public void setQuantity(Integer quantity) {
-        if (quantity > 0) {
-            this.quantity = quantity;
-        } else {
-            throw new IllegalArgumentException();
-        }
-    }
 
     public boolean equals(Item item1, Item item2){
         return (item1.getName() == item2.getName() && item1.getDescription() == item2.getDescription());
@@ -114,7 +82,6 @@ public abstract class Item {
 
     @Override
     public String toString() {
-        return "name: " + this.getName() + " descr: " + this.getDescription() + " (" + this.getQuantity() + ")";
-
+        return "name: " + this.getName() + " descr: " + this.getDescription();
     }
 }

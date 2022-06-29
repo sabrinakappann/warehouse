@@ -3,7 +3,6 @@ package com.storage.warehouse.component;
 import com.storage.warehouse.item.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.Optional;
@@ -12,12 +11,10 @@ import java.util.Optional;
 public class ComponentService {
 
     private final ComponentRepository componentRepository;
-    private final ItemRepository itemRepository;
 
-    @Autowired
+    @Autowired // auto dependency injection
     public ComponentService(ComponentRepository componentRepository, ItemRepository itemRepository) {
         this.componentRepository = componentRepository;
-        this.itemRepository = itemRepository;
     }
 
     public void createNewComponent(Component component){
@@ -37,4 +34,9 @@ public class ComponentService {
 
     }
 
+    public List<Component> getAllComponents() {
+        List<Component> allComponents = componentRepository.findAll();
+        return allComponents;
+
+    }
 }
