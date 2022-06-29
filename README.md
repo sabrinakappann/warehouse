@@ -41,7 +41,6 @@ The goal is also ensure the quality of the project by making automatized tests.
 - [ ] BI related parts - still under consideration
 
 
-
 ### Frontend
 
 Still not defined
