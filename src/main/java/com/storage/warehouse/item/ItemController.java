@@ -9,12 +9,13 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v1/items")
 public class ItemController {
+    // should only return DTO items
 
     @Autowired
     private ItemService itemService;
 
     @GetMapping(path = "all")
-    public ResponseEntity<List<Item>> findAll(){
+    public ResponseEntity<List<ItemDTO>> findAll(){
         return ResponseEntity.ok().body(itemService.findAll());
     }
 

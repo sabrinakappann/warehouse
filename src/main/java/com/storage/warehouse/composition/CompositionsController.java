@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(path = "api/v1/compositions")
 public class CompositionsController {
+    // should only return DTO items
 
     private final CompositionService compositionService;
 

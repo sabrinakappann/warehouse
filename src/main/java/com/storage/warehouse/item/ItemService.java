@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service // dependency injection (@Component = generic)
 public class ItemService {
@@ -18,12 +19,13 @@ public class ItemService {
 
     @Transactional(readOnly = true)
     public List<ItemDTO> findAll(){
-        List<Item> allItems = this.itemRepository.findAll(); // but do NOT return Item entity directly
-        List<ItemDTO> allItemsDTO = new ArrayList<>();
-        for(Item item : allItems){
-            allItemsDTO.add(new ItemDTO(item));
-        }
-        return allItemsDTO;
+        List<Item> listRepository = this.itemRepository.findAll(); // but do NOT return Item entity directly
+
+        // allItems.stream() => Converts list to stream to be able to use map()
+        // map -> apply function (after ->) to each object i
+        // collect(Collectors.toList()) -> convers stream to List
+        List<ItemDTO> listDTO = listRepository.stream().map(x -> new ItemDTO(x)).collect(Collectors.toList()); // transform list of Item to list of ItemDTO
+        return listDTO;
     }
 
 }

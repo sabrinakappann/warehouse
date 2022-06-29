@@ -23,24 +23,29 @@ public abstract class Item implements Serializable {
     @Id
     private Long id;
     private static final Long serialVersionUID = 1L;
+    @Column(name="unitPrice", columnDefinition="Decimal(10,2) default '0.00'")
     private BigDecimal unitPrice;
+    @Column(name="sellPrice", columnDefinition="Decimal(10,2) default '0.00'")
     private BigDecimal sellPrice;
     private String name;
     private String description;
-    private final BigDecimal initialPrice = BigDecimal.valueOf(0.0);
 
     @OneToMany(mappedBy = "item")
     private List<CompositionItemQuantity> compositionItemQuantities;
 
     public Item(String name, String description) {
         // Register an item without quantity or price
-        this.setUnitPrice(this.initialPrice);
+        this.setUnitPrice(BigDecimal.ZERO);
+        this.setSellPrice(BigDecimal.ZERO);
         this.setName(name);
         this.setDescription(description);
     }
 
     public Item() {
-        this.setUnitPrice(this.initialPrice);
+        this.setUnitPrice(BigDecimal.ZERO);
+        this.setSellPrice(BigDecimal.ZERO);
+        this.setName("");
+        this.setDescription("");
     }
 
     public Long getId() {

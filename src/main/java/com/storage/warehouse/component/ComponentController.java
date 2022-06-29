@@ -8,6 +8,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/v1/components")
 public class ComponentController {
+    // should only return DTO items
 
     private final ComponentService componentService;
 
@@ -22,7 +23,7 @@ public class ComponentController {
     }
 
     @GetMapping(path = "all")
-    public ResponseEntity<List<Component>> findAlll(){
+    public ResponseEntity<List<ComponentDTO>> findAlll(){
         // ResponseEntity.ok = builder for status code = 200
         return ResponseEntity.ok(componentService.findAll());
     }

@@ -1,5 +1,7 @@
 package com.storage.warehouse.component;
 
+import com.storage.warehouse.item.Item;
+import com.storage.warehouse.item.ItemDTO;
 import com.storage.warehouse.item.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ComponentService {
@@ -37,9 +40,10 @@ public class ComponentService {
     }
 
     @Transactional(readOnly = true)
-    public List<Component> findAll() {
-        List<Component> allComponents = componentRepository.findAll();
-        return allComponents;
+    public List<ComponentDTO> findAll() {
+        List<Component> listRepository = this.componentRepository.findAll();
+        List<ComponentDTO> listDTO = listRepository.stream().map(x -> new ComponentDTO(x)).collect(Collectors.toList());
+        return listDTO;
 
     }
 }
