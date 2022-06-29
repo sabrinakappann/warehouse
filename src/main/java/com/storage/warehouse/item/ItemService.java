@@ -1,6 +1,7 @@
 package com.storage.warehouse.item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class ItemService {
         this.itemRepository = itemRepository;
     }
 
+    @Transactional(readOnly = true)
     public List<Item> findAll(){
         return this.itemRepository.findAll();
     }

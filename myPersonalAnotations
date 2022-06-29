@@ -20,3 +20,19 @@ MVC Template Engine vs WebServices:
 
 # impar = components
 # par = compositions
+
+
+PROFILES
+
+- test: using H2 DB
+- dev: mysql (run before launch in production)
+- prod: auto-explaining
+
+
+spring.jpa.open-in-view=false:
+    - DB commits ends at service layer (JPA not open  at Controller)
+
+@Transacional:
+    import org.springframework.transaction.annotation.Transactional;
+    ensures ACID properties
+    allows another properties, such as readonly -> avoid db locking when only reading

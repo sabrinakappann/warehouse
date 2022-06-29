@@ -24,7 +24,7 @@ public class ComponentController {
     @GetMapping(path = "all")
     public ResponseEntity<List<Component>> findAlll(){
         // ResponseEntity.ok = builder for status code = 200
-        return ResponseEntity.ok(componentService.getAllComponents());
+        return ResponseEntity.ok(componentService.findAll());
     }
 
 

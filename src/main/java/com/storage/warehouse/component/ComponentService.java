@@ -3,6 +3,8 @@ package com.storage.warehouse.component;
 import com.storage.warehouse.item.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.Optional;
@@ -34,7 +36,8 @@ public class ComponentService {
 
     }
 
-    public List<Component> getAllComponents() {
+    @Transactional(readOnly = true)
+    public List<Component> findAll() {
         List<Component> allComponents = componentRepository.findAll();
         return allComponents;
 
