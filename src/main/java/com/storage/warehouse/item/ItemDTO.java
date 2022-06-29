@@ -5,15 +5,15 @@ import java.math.BigDecimal;
 
 public class ItemDTO  implements Serializable {
     private static final Long serialVersionUID = 1L;
-    private ItemCommonAtributes itemAtributes;
+    public ItemCommonAtributes itemAtributes;
     private final BigDecimal initialPrice = BigDecimal.valueOf(0.0);
 
     public ItemDTO() {
         this.itemAtributes = new ItemCommonAtributes();
     }
 
-    public ItemDTO(BigDecimal unitPrice, BigDecimal sellPrice, String name, String description) {
-        this.itemAtributes = new ItemCommonAtributes(unitPrice, sellPrice, name, description);
+    public ItemDTO(BigDecimal unitPrice, BigDecimal sellPrice, String name, String description, ItemTypes itemType) {
+        this.itemAtributes = new ItemCommonAtributes(unitPrice,  sellPrice,  name,  description,  itemType);
     }
 
     public ItemDTO(Item itemEntity){
@@ -25,4 +25,7 @@ public class ItemDTO  implements Serializable {
     }
 
 
+    public Long getId() {
+        return this.itemAtributes.getId();
+    }
 }

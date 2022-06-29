@@ -4,18 +4,20 @@ import java.math.BigDecimal;
 
 public class ItemCommonAtributes {
 
+    private Long id;
     private BigDecimal unitPrice;
     private BigDecimal sellPrice;
     private String name;
     private String description;
-    private ItemTypes itemType; // can be null
+    private ItemTypes itemType;
 
     public ItemCommonAtributes() {
         this.setUnitPrice(BigDecimal.ZERO);
         this.setSellPrice(BigDecimal.ZERO);
         this.setName("");
         this.setDescription("");
-        this.itemType = null;
+        this.setItemType(itemType);
+        this.setItemType(null);
     }
 
     public ItemCommonAtributes(String name, String description, ItemTypes itemType) {
@@ -34,13 +36,12 @@ public class ItemCommonAtributes {
         this.itemType = itemType;
     }
 
-    public ItemCommonAtributes(BigDecimal unitPrice, BigDecimal sellPrice, String name, String description) {
-        this.unitPrice = unitPrice;
-        this.sellPrice = sellPrice;
-        this.name = name;
-        this.description = description;
-        this.itemType = null;
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public ItemTypes getItemType() {
