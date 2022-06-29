@@ -75,6 +75,21 @@ public abstract class Item implements Serializable {
         return this.description;
     }
 
+    public BigDecimal getSellPrice() {
+        return sellPrice;
+    }
+
+    public void setSellPrice(BigDecimal sellPrice) {
+        this.sellPrice = sellPrice;
+    }
+
+    public List<CompositionItemQuantity> getCompositionItemQuantities() {
+        return compositionItemQuantities;
+    }
+
+    public void setCompositionItemQuantities(List<CompositionItemQuantity> compositionItemQuantities) {
+        this.compositionItemQuantities = compositionItemQuantities;
+    }
 
     public boolean equals(Item item1, Item item2){
         return (item1.getName() == item2.getName() && item1.getDescription() == item2.getDescription());
