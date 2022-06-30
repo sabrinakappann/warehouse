@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service // dependency injection (@Component = generic)
@@ -37,15 +37,27 @@ public class ItemService {
     @Transactional
     public ItemDTO createNew(ItemDTO itemDTO) {
         Item itemEntity;
-        if (itemDTO.itemAtributes.getItemType() == ItemTypes.COMPONENT) {
+
+        if (itemDTO.getItemType() == null){
+            throw new IllegalArgumentException("Missing ItemType");
+        }
+
+        if (Objects.equals(itemDTO.getItemType(), "COMPONENT")) {
             itemEntity = new Component();
         } else {
-            itemEntity = new Composition();
+            if(Objects.equals(itemDTO.getItemType(), "COMPOSITION")){
+                itemEntity = new Composition();
+            }
+            else{
+                throw new IllegalArgumentException("Missing ItemType");
+            }
+
         }
-        itemEntity.setName(itemDTO.itemAtributes.getName());
-        itemEntity.setDescription(itemDTO.itemAtributes.getDescription());
-        itemEntity.setUnitPrice(itemDTO.itemAtributes.getUnitPrice());
-        itemEntity.setSellPrice(itemDTO.itemAtributes.getSellPrice());
+
+        itemEntity.setName(itemDTO.getName());
+        itemEntity.setDescription(itemDTO.getDescription());
+        itemEntity.setUnitPrice(itemDTO.getUnitPrice());
+        itemEntity.setSellPrice(itemDTO.getSellPrice());
         Item newItemEntity = itemRepository.save(itemEntity);
         return new ItemDTO(newItemEntity);
 

@@ -29,7 +29,8 @@ public abstract class Item implements Serializable {
     private BigDecimal sellPrice;
     private String name;
     private String description;
-
+    @Column(name = "ITEM_TYPE", insertable = false, updatable = false) // readonly property
+    private String itemType;
     @OneToMany(mappedBy = "item")
     private List<CompositionItemQuantity> compositionItemQuantities;
 
@@ -46,6 +47,14 @@ public abstract class Item implements Serializable {
         this.setSellPrice(BigDecimal.ZERO);
         this.setName("");
         this.setDescription("");
+    }
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    protected void setItemType(String itemType){
+        this.itemType = itemType;
     }
 
     public Long getId() {

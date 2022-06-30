@@ -1,5 +1,5 @@
 package com.storage.warehouse.item;
 
-public enum ItemTypes {
+public enum ItemTypeEnum {
     COMPOSITION, COMPONENT
 }
