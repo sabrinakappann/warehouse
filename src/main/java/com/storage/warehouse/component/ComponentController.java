@@ -30,7 +30,7 @@ public class ComponentController{
     }
 
     @GetMapping(path = "allComponents")
-    public ResponseEntity<List<ComponentDTO>> findAlllComponents(){
+    public ResponseEntity<List<ComponentDTO>> findAllComponents(){
         // ResponseEntity.ok = builder for status code = 200
         return ResponseEntity.ok(this.componentService.findAllComponents());
     }
