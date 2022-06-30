@@ -18,6 +18,7 @@ public class Component extends Item {
 
     public Component() {
         super();
+        this.setItemType("COMPONENT");
     }
 
 }

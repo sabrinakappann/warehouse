@@ -15,6 +15,7 @@ public class Composition extends Item {
 
     public Composition() {
         super();
+        this.setItemType("COMPOSITION");
     }
 
     // creates without items defined

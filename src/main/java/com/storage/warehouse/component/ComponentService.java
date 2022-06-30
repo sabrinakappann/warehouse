@@ -21,7 +21,7 @@ public class ComponentService {
     public ComponentService(ComponentRepository componentRepository, ItemRepository itemRepository) {
         this.componentRepository = componentRepository;
     }
-
+/*
     public void createNewComponent(Component component){
 
         List<Optional<Component>> componentsWithSameName = componentRepository.findComponentByName(component.getName());
@@ -45,5 +45,5 @@ public class ComponentService {
         List<ComponentDTO> listDTO = listRepository.stream().map(x -> new ComponentDTO(x)).collect(Collectors.toList());
         return listDTO;
 
-    }
+    }*/
 }

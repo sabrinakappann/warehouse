@@ -17,7 +17,7 @@ public class ComponentController {
         this.componentService = componentService;
     }
 
-    @PostMapping(path = "new")
+/*    @PostMapping(path = "new")
     public void createNewComponent(@RequestBody Component component){
         componentService.createNewComponent(component);
     }
@@ -26,7 +26,7 @@ public class ComponentController {
     public ResponseEntity<List<ComponentDTO>> findAlll(){
         // ResponseEntity.ok = builder for status code = 200
         return ResponseEntity.ok(componentService.findAll());
-    }
+    }*/
 
 
 }
