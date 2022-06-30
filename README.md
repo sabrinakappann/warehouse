@@ -31,6 +31,7 @@ The goal is also ensure the quality of the project by making automatized tests.
     - [X] Create new Components
     - [X] Create new generic Items (if Composition, no items and quantities defined yet)
     - [ ] Create new Compositions + its items/quantities
+    - [ ] Business logic validation at entities getters and setters
   - READ:
     - [X] List all items registered
     - [X] List all components registered
@@ -38,6 +39,7 @@ The goal is also ensure the quality of the project by making automatized tests.
     - [ ] List all (generic) items IN STOCK
     - [ ] List all components IN STOCK
     - [ ] List all compositions IN STOCK
+    -  ...
 
 - [ ] Endpoint to create compositions (items that are made from a group of Items, been them Components or Compositions)
 - [ ] Create the USers, Sellers and Buyers related models

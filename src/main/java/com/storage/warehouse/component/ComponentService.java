@@ -22,8 +22,7 @@ public class ComponentService extends ItemService {
     }
 
     public ItemDTO createNewComponent(ItemDTO componentDTO){
-        componentDTO.setItemType("COMPONENT");
-        System.out.println("ITEM_TYPE SETTED = " + componentDTO.getItemType());
+        componentDTO.setItemType("COMPONENT"); // ver se dá pra tirar por estar na entity ja
         return this.createNew(componentDTO);
     }
 

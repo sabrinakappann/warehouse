@@ -9,7 +9,7 @@ public class ComponentDTO extends ItemDTO {
 
     public ComponentDTO(Component componentEntity) {
         super(componentEntity);
-        //this.setItemType("COMPONENT");
+        this.setItemType("COMPONENT");
     }
 
  /*   public ComponentDTO() {

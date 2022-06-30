@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
@@ -34,7 +35,7 @@ public abstract class Item implements Serializable {
     @Column(name = "ITEM_TYPE", insertable = false, updatable = false) // readonly property
     private String itemType;
     @OneToMany(mappedBy = "item")
-    private List<CompositionItemQuantity> compositionItemQuantities;
+    private Set<CompositionItemQuantity> compositionItemQuantities;
 
     public Item(String name, String description) {
         // Register an item without quantity or price
@@ -55,7 +56,7 @@ public abstract class Item implements Serializable {
         return itemType;
     }
 
-    protected void setItemType(String itemType){
+    public void setItemType(String itemType){
         this.itemType = itemType;
     }
 
@@ -99,11 +100,11 @@ public abstract class Item implements Serializable {
         this.sellPrice = sellPrice;
     }
 
-    public List<CompositionItemQuantity> getCompositionItemQuantities() {
+    public Set<CompositionItemQuantity> getCompositionItemQuantities() {
         return compositionItemQuantities;
     }
 
-    public void setCompositionItemQuantities(List<CompositionItemQuantity> compositionItemQuantities) {
+    public void setCompositionItemQuantities(Set<CompositionItemQuantity> compositionItemQuantities) {
         this.compositionItemQuantities = compositionItemQuantities;
     }
 
