@@ -1,11 +1,10 @@
 package com.storage.warehouse.item;
 
-import com.storage.warehouse.compositionItemQuantity.CompositionItemQuantity;
+import com.storage.warehouse.compositionItemsQuantities.CompositionItems;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Set;
 
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -35,7 +34,7 @@ public abstract class Item implements Serializable {
     @Column(name = "ITEM_TYPE", insertable = false, updatable = false) // readonly property
     private String itemType;
     @OneToMany(mappedBy = "item")
-    private Set<CompositionItemQuantity> compositionItemQuantities;
+    private Set<CompositionItems> compositionItemQuantities;
 
     public Item(String name, String description) {
         // Register an item without quantity or price
@@ -100,11 +99,11 @@ public abstract class Item implements Serializable {
         this.sellPrice = sellPrice;
     }
 
-    public Set<CompositionItemQuantity> getCompositionItemQuantities() {
+    public Set<CompositionItems> getCompositionItemQuantities() {
         return compositionItemQuantities;
     }
 
-    public void setCompositionItemQuantities(Set<CompositionItemQuantity> compositionItemQuantities) {
+    public void setCompositionItemQuantities(Set<CompositionItems> compositionItemQuantities) {
         this.compositionItemQuantities = compositionItemQuantities;
     }
 

@@ -1,14 +1,14 @@
-package com.storage.warehouse.compositionItemQuantity;
+package com.storage.warehouse.compositionItemsQuantities;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class CompositionItemQuantityId implements Serializable {
+public class CompositionItemsId implements Serializable {
 
     private Long composition;
     private Long item;
 
-    public CompositionItemQuantityId(Long compositionId, Long itemId) {
+    public CompositionItemsId(Long compositionId, Long itemId) {
         this.composition = compositionId;
         this.item = itemId;
     }
@@ -35,7 +35,7 @@ public class CompositionItemQuantityId implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CompositionItemQuantityId that = (CompositionItemQuantityId) o;
+        CompositionItemsId that = (CompositionItemsId) o;
         return Objects.equals(getComposition(), that.getComposition()) && Objects.equals(getItem(), that.getItem());
     }
 

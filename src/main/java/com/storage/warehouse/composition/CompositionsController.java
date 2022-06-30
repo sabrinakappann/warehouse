@@ -1,7 +1,6 @@
 package com.storage.warehouse.composition;
 
-import com.storage.warehouse.compositionItemQuantity.CompositionItemQuantity;
-import com.storage.warehouse.compositionItemQuantity.CompositionItemQuantityDTO;
+import com.storage.warehouse.compositionItemsQuantities.CompositionItemsDTO;
 import com.storage.warehouse.item.ItemDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping(path = "api/v1/compositions")
@@ -28,11 +29,15 @@ public class CompositionsController {
 
     @PostMapping(path = "/new/empty")
     public ResponseEntity<ItemDTO> newEmptyComposition (@RequestBody ItemDTO compositionDTO){
-        ItemDTO newCompositionDTO = this.compositionService.createNewComposition(compositionDTO);
+        ItemDTO newCompositionDTO = this.compositionService.createNewEmptyComposition(compositionDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newCompositionDTO.getId()).toUri(); // create new URI from request + the new generated id
         return  ResponseEntity.ok().body(newCompositionDTO); // default 201 code when creating new resource + return id at header
-
     }
 
-
+    @PostMapping()
+    public ResponseEntity<CompositionDTO> newComposition (@RequestBody CompositionDTO compositionDTO ){
+        CompositionDTO newCompositionDTO = this.compositionService.createNewComposition(compositionDTO);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newCompositionDTO.getId()).toUri(); // create new URI from request + the new generated id
+        return  ResponseEntity.ok().body(newCompositionDTO); // default 201 code when creating new resource + return id at header
+    }
 }

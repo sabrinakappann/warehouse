@@ -1,4 +1,4 @@
-package com.storage.warehouse.compositionItemQuantity;
+package com.storage.warehouse.compositionItemsQuantities;
 
 import com.storage.warehouse.composition.Composition;
 import com.storage.warehouse.item.Item;
@@ -7,8 +7,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "composition_item_quantity")
-@IdClass(CompositionItemQuantityId.class)
-public class CompositionItemQuantity {
+@IdClass(CompositionItemsId.class)
+public class CompositionItems {
 
     /*
     *  validar valores de qtds    *
@@ -26,10 +26,10 @@ public class CompositionItemQuantity {
     @Column(name = "quantity")
     private Integer quantity;
 
-    public CompositionItemQuantity() {
+    public CompositionItems() {
     }
 
-    public CompositionItemQuantity(Composition composition, Item item, Integer quantity) {
+    public CompositionItems(Composition composition, Item item, Integer quantity) {
         this.composition = composition;
         this.item = item;
         this.quantity = quantity;
