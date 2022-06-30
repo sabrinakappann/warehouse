@@ -2,8 +2,12 @@ package com.storage.warehouse.composition;
 
 import com.storage.warehouse.compositionItemQuantity.CompositionItemQuantity;
 import com.storage.warehouse.item.Item;
-import javax.persistence.*;
-import java.util.*;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @DiscriminatorValue("COMPOSITION")

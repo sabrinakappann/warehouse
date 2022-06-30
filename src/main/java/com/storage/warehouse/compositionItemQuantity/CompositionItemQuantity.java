@@ -1,9 +1,8 @@
 package com.storage.warehouse.compositionItemQuantity;
+
 import com.storage.warehouse.composition.Composition;
 import com.storage.warehouse.item.Item;
-import javax.persistence.Entity;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+
 import javax.persistence.*;
 
 @Entity
