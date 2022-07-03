@@ -1,13 +1,18 @@
 package com.storage.warehouse.component;
 
+import com.storage.warehouse.item.ItemDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/components")
-public class ComponentController {
+public class ComponentController{
+    // should only return DTO items
 
     private final ComponentService componentService;
 
@@ -16,15 +21,18 @@ public class ComponentController {
         this.componentService = componentService;
     }
 
-    @PostMapping(path = "new")
-    public void createNewComponent(@RequestBody Component component){
-        componentService.createNewComponent(component);
+    @PostMapping()
+    public ResponseEntity<ItemDTO> createNewComponent(@RequestBody ItemDTO componentDTO){
+        ItemDTO newComponentDTO = this.componentService.createNewComponent(componentDTO);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newComponentDTO.getId()).toUri(); // create new URI from request + the new generated id
+        return  ResponseEntity.ok().body(newComponentDTO); // default 201 code when creating new resource + return id at header
+
     }
 
     @GetMapping(path = "all")
-    public ResponseEntity<List<Component>> findAlll(){
+    public ResponseEntity<List<ComponentDTO>> findAllComponents(){
         // ResponseEntity.ok = builder for status code = 200
-        return ResponseEntity.ok(componentService.getAllComponents());
+        return ResponseEntity.ok(this.componentService.findAllComponents());
     }
 
 

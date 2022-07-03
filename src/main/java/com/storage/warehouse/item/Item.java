@@ -1,9 +1,13 @@
 package com.storage.warehouse.item;
-import com.storage.warehouse.compositionItemQuantity.CompositionItemQuantity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.storage.warehouse.compositionItemsQuantities.CompositionItems;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Inheritance(strategy = InheritanceType.JOINED)
 @Entity
@@ -23,24 +27,52 @@ public abstract class Item implements Serializable {
     @Id
     private Long id;
     private static final Long serialVersionUID = 1L;
+    @Column(name="unit_price", columnDefinition="Decimal(10,2) default '0.00'")
     private BigDecimal unitPrice;
+    @Column(name="sell_price", columnDefinition="Decimal(10,2) default '0.00'")
     private BigDecimal sellPrice;
     private String name;
     private String description;
-    private final BigDecimal initialPrice = BigDecimal.valueOf(0.0);
+    @Column(name = "ITEM_TYPE", insertable = false, updatable = false) // readonly property
+    private String itemType;
 
-    @OneToMany(mappedBy = "item")
-    private List<CompositionItemQuantity> compositionItemQuantities;
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "item")
+    private Set<CompositionItems> itemCompositionItems = new HashSet<>();
 
     public Item(String name, String description) {
         // Register an item without quantity or price
-        this.setUnitPrice(this.initialPrice);
+        this.setUnitPrice(BigDecimal.ZERO);
+        this.setSellPrice(BigDecimal.ZERO);
         this.setName(name);
         this.setDescription(description);
     }
 
     public Item() {
-        this.setUnitPrice(this.initialPrice);
+        this.setUnitPrice(BigDecimal.ZERO);
+        this.setSellPrice(BigDecimal.ZERO);
+        this.setName("");
+        this.setDescription("");
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Set<CompositionItems> getItemCompositionItems() {
+        return itemCompositionItems;
+    }
+
+    public void setItemCompositionItems(Set<CompositionItems> itemCompositionItems) {
+        this.itemCompositionItems = itemCompositionItems;
+    }
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType){
+        this.itemType = itemType;
     }
 
     public Long getId() {
@@ -75,6 +107,16 @@ public abstract class Item implements Serializable {
         return this.description;
     }
 
+    public BigDecimal getSellPrice() {
+        return sellPrice;
+    }
+
+    public void setSellPrice(BigDecimal sellPrice) {
+        this.sellPrice = sellPrice;
+    }
+
+
+    // 01-08 Classe Category => ver sobre equals e hashcode e add
 
     public boolean equals(Item item1, Item item2){
         return (item1.getName() == item2.getName() && item1.getDescription() == item2.getDescription());
