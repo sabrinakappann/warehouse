@@ -1,12 +1,10 @@
 package com.storage.warehouse.composition;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.storage.warehouse.compositionItemsQuantities.CompositionItems;
 import com.storage.warehouse.item.Item;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,20 +14,21 @@ import java.util.Set;
 public class Composition extends Item {
 
 
-    @OneToMany(mappedBy = "composition")
-    private Set<CompositionItems> compositionItemQuantities = new HashSet<>();
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "composition")
+    @JsonManagedReference
+    private Set<CompositionItems> compositionCompositionItems;
 
     public Composition() {
         super();
         this.setItemType("COMPOSITION");
     }
 
-    public Set<CompositionItems> getCompositionItemQuantities() {
-        return this.compositionItemQuantities;
+    public Set<CompositionItems> getCompositionCompositionItems() {
+        return this.compositionCompositionItems;
     }
 
-    public void setCompositionItemQuantities(Set<CompositionItems> compositionItemQuantities) {
-        this.compositionItemQuantities = compositionItemQuantities;
+    public void setCompositionCompositionItems(Set<CompositionItems> compositionCompositionItems) {
+        this.compositionCompositionItems = compositionCompositionItems;
     }
 
 }

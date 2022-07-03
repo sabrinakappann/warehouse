@@ -1,5 +1,6 @@
 package com.storage.warehouse.item;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.storage.warehouse.compositionItemsQuantities.CompositionItems;
 
 import javax.persistence.*;
@@ -34,8 +35,10 @@ public abstract class Item implements Serializable {
     private String description;
     @Column(name = "ITEM_TYPE", insertable = false, updatable = false) // readonly property
     private String itemType;
-    @OneToMany(mappedBy = "item")
-    private Set<CompositionItems> compositionItemQuantities = new HashSet<>();
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "item")
+    private Set<CompositionItems> itemCompositionItems = new HashSet<>();
 
     public Item(String name, String description) {
         // Register an item without quantity or price
@@ -50,6 +53,18 @@ public abstract class Item implements Serializable {
         this.setSellPrice(BigDecimal.ZERO);
         this.setName("");
         this.setDescription("");
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Set<CompositionItems> getItemCompositionItems() {
+        return itemCompositionItems;
+    }
+
+    public void setItemCompositionItems(Set<CompositionItems> itemCompositionItems) {
+        this.itemCompositionItems = itemCompositionItems;
     }
 
     public String getItemType() {
@@ -98,10 +113,6 @@ public abstract class Item implements Serializable {
 
     public void setSellPrice(BigDecimal sellPrice) {
         this.sellPrice = sellPrice;
-    }
-
-    public Set<CompositionItems> getCompositionItemQuantities() {
-        return compositionItemQuantities;
     }
 
 

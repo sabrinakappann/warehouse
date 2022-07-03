@@ -1,5 +1,6 @@
 package com.storage.warehouse.compositionItemsQuantities;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
@@ -8,7 +9,9 @@ import java.util.Objects;
 public class CompositionItemsId implements Serializable {
 
     private static final Long serialVersionUID = 1L;
+    @Column(name = "composition_id")
     Long compositionId;
+    @Column(name = "item_id")
     Long itemId;
 
 

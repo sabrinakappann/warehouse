@@ -37,9 +37,13 @@ spring.jpa.open-in-view=false:
     import org.springframework.transaction.annotation.Transactional;
     ensures ACID properties
     allows another properties, such as readonly -> avoid db locking when only reading
+    ** add em métodos do service
 
 
 DTO
     "repository delegates the actual persistence of the aggregate roots to a DAO"
     MUST HAVE GETTERS AND SETTERS AND PRIVATE ATRIBUTES SUCH AS ENTITY CLASS
     communication between controllers and services -> instead of the entities directly
+
+
+Classes resources = meus controllers

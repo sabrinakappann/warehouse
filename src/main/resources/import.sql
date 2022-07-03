@@ -19,11 +19,11 @@ INSERT INTO ITEMS (ITEM_TYPE,  	ID,  	DESCRIPTION,  	NAME) VALUES ('COMPOSITION'
 INSERT INTO COMPOSITIONS (ID) VALUES (200);
 INSERT INTO COMPOSITIONS (ID) VALUES (400);
 
-INSERT INTO COMPOSITION_ITEM_QUANTITY ( COMPOSITION_ID , ITEM_ID , QUANTITY ) VALUES (200, 100, 1);
-INSERT INTO COMPOSITION_ITEM_QUANTITY ( COMPOSITION_ID , ITEM_ID , QUANTITY ) VALUES (200, 300, 1);
-INSERT INTO COMPOSITION_ITEM_QUANTITY ( COMPOSITION_ID , ITEM_ID , QUANTITY ) VALUES (200, 500, 1);
-INSERT INTO COMPOSITION_ITEM_QUANTITY ( COMPOSITION_ID , ITEM_ID , QUANTITY ) VALUES (200, 700, 1);
+INSERT INTO composition_item_quantity ( composition_id , item_id , quantity ) VALUES (200, 100, 1);
+INSERT INTO composition_item_quantity ( composition_id , item_id , quantity ) VALUES (200, 300, 1);
+INSERT INTO composition_item_quantity ( composition_id , item_id , quantity ) VALUES (200, 500, 1);
+INSERT INTO composition_item_quantity ( composition_id , item_id , quantity ) VALUES (200, 700, 1);
 
-INSERT INTO COMPOSITION_ITEM_QUANTITY ( COMPOSITION_ID , ITEM_ID , QUANTITY ) VALUES (400, 700, 3);
-INSERT INTO COMPOSITION_ITEM_QUANTITY ( COMPOSITION_ID , ITEM_ID , QUANTITY ) VALUES (400, 900, 1);
-INSERT INTO COMPOSITION_ITEM_QUANTITY ( COMPOSITION_ID , ITEM_ID , QUANTITY ) VALUES (400, 110, 1);
+INSERT INTO composition_item_quantity ( composition_id , item_id , quantity ) VALUES (400, 700, 3);
+INSERT INTO composition_item_quantity ( composition_id , item_id , quantity ) VALUES (400, 900, 1);
+INSERT INTO composition_item_quantity ( composition_id , item_id , quantity ) VALUES (400, 110, 1);

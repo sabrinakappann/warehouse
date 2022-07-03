@@ -1,16 +1,11 @@
 package com.storage.warehouse.composition;
-import com.storage.warehouse.component.Component;
 import com.storage.warehouse.compositionItemsQuantities.CompositionItemsRepository;
-import com.storage.warehouse.item.Item;
 import com.storage.warehouse.item.ItemDTO;
-import com.storage.warehouse.item.ItemRepository;
-import com.storage.warehouse.item.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service // Service it is a kind of Component that I think is to the autowire onto controller works
@@ -43,7 +38,7 @@ public class CompositionService{
     @Transactional(readOnly = true)
     public List<CompositionDTO> findAllCompositions() {
         List<Composition> listRepository = this.compositionRepository.findAll();
-        List<CompositionDTO> listDTO = listRepository.stream().map(x -> new CompositionDTO(x, x.getCompositionItemQuantities())).collect(Collectors.toList());
+        List<CompositionDTO> listDTO = listRepository.stream().map(x -> new CompositionDTO(x, x.getCompositionCompositionItems())).collect(Collectors.toList());
         return listDTO;
     }
 

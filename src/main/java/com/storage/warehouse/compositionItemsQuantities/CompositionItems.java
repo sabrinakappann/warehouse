@@ -1,5 +1,6 @@
 package com.storage.warehouse.compositionItemsQuantities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.storage.warehouse.composition.Composition;
 import com.storage.warehouse.item.Item;
 
@@ -14,12 +15,13 @@ public class CompositionItems {
     * */
 
     @EmbeddedId // pk = CompositionItemsId class
-    CompositionItemsId id;
+    CompositionItemsId compositionItemsId;
 
     @ManyToOne
     @MapsId("compositionId") // @MapsId means that we tie those fields to a part of the key, and they're the
                             // foreign keys of a many-to-one relationship
     @JoinColumn(name = "composition_id")
+    @JsonBackReference
     private Composition composition;
 
     @ManyToOne
@@ -37,10 +39,13 @@ public class CompositionItems {
         this.composition = composition;
         this.item = item;
         this.quantity = quantity;
+        this.compositionItemsId = new CompositionItemsId();
+        this.compositionItemsId.compositionId = composition.getId();
+        this.compositionItemsId.itemId = item.getId();
     }
 
     public Composition getComposition() {
-        return composition;
+        return this.composition;
     }
 
     public void setComposition(Composition composition) {
@@ -48,7 +53,7 @@ public class CompositionItems {
     }
 
     public Item getItem() {
-        return item;
+        return this.item;
     }
 
     public void setItem(Item item) {
@@ -56,7 +61,7 @@ public class CompositionItems {
     }
 
     public Integer getQuantity() {
-        return quantity;
+        return this.quantity;
     }
 
     public void setQuantity(Integer quantity) {
