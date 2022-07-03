@@ -11,13 +11,9 @@ import javax.persistence.Table;
 @Table(name = "components")
 public class Component extends Item {
 
-    // new register -> without qtd or price
-    public Component(String name, String description){
-        super(name, description);
-    }
-
     public Component() {
         super();
+        this.setItemType("COMPONENT");
     }
 
 }

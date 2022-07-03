@@ -14,9 +14,36 @@ MVC Template Engine vs WebServices:
             WebServices controllers pattern
             Same prefix for paths, actions defined by http method
             POST != PUT -> POST always add a new, put can update
+            default 201 code when creating new resource; return its id
 
     Resources = REST Controllers
 
 
 # impar = components
 # par = compositions
+
+
+PROFILES
+
+- test: using H2 DB
+- dev: mysql (run before launch in production)
+- prod: auto-explaining
+
+
+spring.jpa.open-in-view=false:
+    - DB commits ends at service layer (JPA not open  at Controller)
+
+@Transacional:
+    import org.springframework.transaction.annotation.Transactional;
+    ensures ACID properties
+    allows another properties, such as readonly -> avoid db locking when only reading
+    ** add em métodos do service
+
+
+DTO
+    "repository delegates the actual persistence of the aggregate roots to a DAO"
+    MUST HAVE GETTERS AND SETTERS AND PRIVATE ATRIBUTES SUCH AS ENTITY CLASS
+    communication between controllers and services -> instead of the entities directly
+
+
+Classes resources = meus controllers

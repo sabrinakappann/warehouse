@@ -25,9 +25,24 @@ The goal is also ensure the quality of the project by making automatized tests.
 
 
 ### Backend - functionalities to be done to serve the requisites (the order is not mandatory):
-- [X] Create the Item related classes
-- [ ] Create stock related classes
-- [X] Endpoint to create components (register a new one)
+- [X] Create the Item/Component/Compositions base Controller/Model/Data classes
+- BASIC CRUD:
+  - CREATE and UPDATE:
+    - [X] Create new Components
+    - [X] Create new generic Items (if Composition, no items and quantities defined yet)
+    - [X] Create new Compositions (without set its items and quantities yet)
+    - [ ] Add items and its quantities to a composition
+    - [ ] Business logic validation at entities getters and setters
+  - READ:
+    - [X] List all items registered
+    - [X] List all components registered
+    - [ ] List all compositions registered
+    - [ ] List all (generic) items IN STOCK
+    - [ ] List all components IN STOCK
+    - [ ] List all compositions IN STOCK
+    - [ ] All list operations with pagination
+    - ...
+
 - [ ] Endpoint to create compositions (items that are made from a group of Items, been them Components or Compositions)
 - [ ] Create the USers, Sellers and Buyers related models
 - [ ] Endpoint to add or remove items from stock
