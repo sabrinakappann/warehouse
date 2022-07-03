@@ -3,11 +3,17 @@ package com.storage.warehouse.compositionItemsQuantities;
 import com.storage.warehouse.composition.Composition;
 import com.storage.warehouse.item.Item;
 
-public class CompositionItemsDTO {
+import java.io.Serializable;
+
+public class CompositionItemsDTO  implements Serializable {
+    private static final Long serialVersionUID = 1L;
     private Composition composition;
     private Item item;
     private Integer quantity;
     private CompositionItemsId id;
+
+    public CompositionItemsDTO() {
+    }
 
     public CompositionItemsDTO(CompositionItems entity){
         this.composition = entity.getComposition();

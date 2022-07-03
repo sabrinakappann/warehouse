@@ -5,8 +5,9 @@ import java.util.Objects;
 
 public class CompositionItemsId implements Serializable {
 
-    private Long composition;
-    private Long item;
+    private Long composition; // name must be this one, but reffers to compositionId
+    private Long item; // name must be this one, but reffers to itemId
+    private static final Long serialVersionUID = 1L;
 
     public CompositionItemsId(Long compositionId, Long itemId) {
         this.composition = compositionId;
