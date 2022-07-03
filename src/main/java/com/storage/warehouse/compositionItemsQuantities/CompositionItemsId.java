@@ -1,13 +1,15 @@
 package com.storage.warehouse.compositionItemsQuantities;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public class CompositionItemsId implements Serializable {
 
     private Long composition; // name must be this one, but reffers to compositionId
     private Long item; // name must be this one, but reffers to itemId
     private static final Long serialVersionUID = 1L;
+
+    public CompositionItemsId() {
+    }
 
     public CompositionItemsId(Long compositionId, Long itemId) {
         this.composition = compositionId;
@@ -30,7 +32,7 @@ public class CompositionItemsId implements Serializable {
         this.item = item;
     }
 
-    // this is important for some reason
+/*    // this is important for some reason
 
     @Override
     public boolean equals(Object o) {
@@ -43,6 +45,6 @@ public class CompositionItemsId implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(getComposition(), getItem());
-    }
+    }*/
 
 }

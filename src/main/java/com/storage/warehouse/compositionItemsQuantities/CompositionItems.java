@@ -23,6 +23,7 @@ public class CompositionItems {
     @ManyToOne
     @JoinColumn(name = "item_id", referencedColumnName = "id")
     private Item item;
+
     @Column(name = "quantity")
     private Integer quantity;
 
