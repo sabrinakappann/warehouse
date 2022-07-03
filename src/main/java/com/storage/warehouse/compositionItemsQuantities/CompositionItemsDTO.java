@@ -22,6 +22,10 @@ public class CompositionItemsDTO  implements Serializable {
         this.id = new CompositionItemsId(composition.getId(), item.getId());
     }
 
+    public CompositionItemsDTO(CompositionItemsId compositionsAndItemsId){
+        this.id = compositionsAndItemsId;
+    }
+
     public Composition getComposition() {
         return composition;
     }

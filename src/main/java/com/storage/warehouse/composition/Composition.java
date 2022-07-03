@@ -16,7 +16,7 @@ import java.util.Set;
 public class Composition extends Item {
 
     @OneToMany(mappedBy = "composition")
-    private Set<CompositionItems> compositionItemQuantities = new HashSet<>();;
+    private final Set<CompositionItems> compositionItemQuantities = new HashSet<>();
 
     public Composition() {
         super();

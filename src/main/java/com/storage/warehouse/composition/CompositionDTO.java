@@ -3,8 +3,7 @@ import com.storage.warehouse.compositionItemsQuantities.CompositionItems;
 import com.storage.warehouse.compositionItemsQuantities.CompositionItemsDTO;
 import com.storage.warehouse.item.ItemDTO;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class CompositionDTO extends ItemDTO {
 
@@ -36,7 +35,9 @@ public class CompositionDTO extends ItemDTO {
     public void setItemQuantitiesDTO(Set<CompositionItemsDTO> itemQuantitiesDTO) {
         this.itemQuantitiesDTO = itemQuantitiesDTO;
     }
-    
+
+
+
 /*
     public void addItem(Item item, Integer quantity){
         // se item já estava na lista, sobrepoe a quantidade

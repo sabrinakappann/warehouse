@@ -7,21 +7,24 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "composition_item_quantity")
-@IdClass(CompositionItemsId.class)
 public class CompositionItems {
 
     /*
     *  validar valores de qtds    *
     * */
 
-    @Id
+    @EmbeddedId // pk = CompositionItemsId class
+    CompositionItemsId id;
+
     @ManyToOne
-    @JoinColumn(name = "composition_id", referencedColumnName = "id")
+    @MapsId("compositionId") // @MapsId means that we tie those fields to a part of the key, and they're the
+                            // foreign keys of a many-to-one relationship
+    @JoinColumn(name = "composition_id")
     private Composition composition;
 
-    @Id
     @ManyToOne
-    @JoinColumn(name = "item_id", referencedColumnName = "id")
+    @MapsId("itemId")
+    @JoinColumn(name = "item_id")
     private Item item;
 
     @Column(name = "quantity")
