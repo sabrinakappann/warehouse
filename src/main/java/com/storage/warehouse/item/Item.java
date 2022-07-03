@@ -3,6 +3,7 @@ import com.storage.warehouse.compositionItemQuantity.CompositionItemQuantity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
 
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -28,6 +29,10 @@ public abstract class Item implements Serializable {
     private String name;
     private String description;
     private final BigDecimal initialPrice = BigDecimal.valueOf(0.0);
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant createdAt;
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant updatedAt;
 
     @OneToMany(mappedBy = "item")
     private List<CompositionItemQuantity> compositionItemQuantities;
@@ -75,6 +80,23 @@ public abstract class Item implements Serializable {
         return this.description;
     }
 
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
+
+    @PrePersist
+    public void prePersist(){
+        createdAt = Instant.now();
+    }
+
+    @PreUpdate
+    public void PreUpdate(){
+        updatedAt = Instant.now();
+    }
 
     public boolean equals(Item item1, Item item2){
         return (item1.getName() == item2.getName() && item1.getDescription() == item2.getDescription());
