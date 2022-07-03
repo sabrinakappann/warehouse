@@ -29,7 +29,7 @@ public class ComponentController{
 
     }
 
-    @GetMapping(path = "allComponents")
+    @GetMapping(path = "all")
     public ResponseEntity<List<ComponentDTO>> findAllComponents(){
         // ResponseEntity.ok = builder for status code = 200
         return ResponseEntity.ok(this.componentService.findAllComponents());

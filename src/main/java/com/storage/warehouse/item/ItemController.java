@@ -15,7 +15,7 @@ public class ItemController {
     @Autowired
     protected ItemService itemService;
 
-    @GetMapping(path = "allItems")
+    @GetMapping(path = "all")
     public ResponseEntity<List<ItemDTO>> findAllItems(){
         return ResponseEntity.ok().body(itemService.findAll());
     }

@@ -5,6 +5,7 @@ import com.storage.warehouse.compositionItemsQuantities.CompositionItems;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Set;
 
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -25,16 +26,16 @@ public abstract class Item implements Serializable {
     @Id
     private Long id;
     private static final Long serialVersionUID = 1L;
-    @Column(name="unitPrice", columnDefinition="Decimal(10,2) default '0.00'")
+    @Column(name="unit_price", columnDefinition="Decimal(10,2) default '0.00'")
     private BigDecimal unitPrice;
-    @Column(name="sellPrice", columnDefinition="Decimal(10,2) default '0.00'")
+    @Column(name="sell_price", columnDefinition="Decimal(10,2) default '0.00'")
     private BigDecimal sellPrice;
     private String name;
     private String description;
     @Column(name = "ITEM_TYPE", insertable = false, updatable = false) // readonly property
     private String itemType;
     @OneToMany(mappedBy = "item")
-    private Set<CompositionItems> compositionItemQuantities;
+    private Set<CompositionItems> itemCompositionItemQuantities = new HashSet<>();
 
     public Item(String name, String description) {
         // Register an item without quantity or price
@@ -99,13 +100,12 @@ public abstract class Item implements Serializable {
         this.sellPrice = sellPrice;
     }
 
-    public Set<CompositionItems> getCompositionItemQuantities() {
-        return compositionItemQuantities;
+    public Set<CompositionItems> getItemCompositionItemQuantities() {
+        return this.itemCompositionItemQuantities;
     }
 
-    public void setCompositionItemQuantities(Set<CompositionItems> compositionItemQuantities) {
-        this.compositionItemQuantities = compositionItemQuantities;
-    }
+
+    // 01-08 Classe Category => ver sobre equals e hashcode e add
 
     public boolean equals(Item item1, Item item2){
         return (item1.getName() == item2.getName() && item1.getDescription() == item2.getDescription());

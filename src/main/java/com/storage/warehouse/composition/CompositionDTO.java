@@ -12,8 +12,7 @@ public class CompositionDTO extends ItemDTO {
     public CompositionDTO(Composition compositionEntity){
         super(compositionEntity);
         this.setItemType("COMPOSITION");
-        Set<CompositionItems> itemQuantities = compositionEntity.getCompositionItemQuantities();
-        itemQuantities.forEach(c -> this.itemQuantitiesDTO.add(new CompositionItemsDTO(c)));
+
     }
 
     public CompositionDTO(Composition compositionEntity, Set<CompositionItems> itemQuantities){

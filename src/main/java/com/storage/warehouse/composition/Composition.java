@@ -15,12 +15,21 @@ import java.util.Set;
 @Table(name = "compositions")
 public class Composition extends Item {
 
+
     @OneToMany(mappedBy = "composition")
-    private final Set<CompositionItems> compositionItemQuantities = new HashSet<>();
+    private Set<CompositionItems> compositionItemQuantities = new HashSet<>();
 
     public Composition() {
         super();
         this.setItemType("COMPOSITION");
+    }
+
+    public Set<CompositionItems> getCompositionItemQuantities() {
+        return this.compositionItemQuantities;
+    }
+
+    public void setCompositionItemQuantities(Set<CompositionItems> compositionItemQuantities) {
+        this.compositionItemQuantities = compositionItemQuantities;
     }
 
 }

@@ -49,7 +49,7 @@ public class ItemService {
                 itemEntity = new Composition();
             }
             else{
-                throw new IllegalArgumentException("Missing ItemType");
+                throw new IllegalArgumentException("Wrong ItemType");
             }
 
         }

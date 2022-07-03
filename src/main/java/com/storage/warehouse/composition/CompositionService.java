@@ -1,5 +1,7 @@
 package com.storage.warehouse.composition;
+import com.storage.warehouse.component.Component;
 import com.storage.warehouse.compositionItemsQuantities.CompositionItemsRepository;
+import com.storage.warehouse.item.Item;
 import com.storage.warehouse.item.ItemDTO;
 import com.storage.warehouse.item.ItemRepository;
 import com.storage.warehouse.item.ItemService;
@@ -7,28 +9,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 @Service // Service it is a kind of Component that I think is to the autowire onto controller works
-public class CompositionService extends ItemService {
+public class CompositionService{
 
     @Autowired
     private CompositionRepository compositionRepository;
     @Autowired
     private CompositionItemsRepository compositionItemsRepository;
 
+
     @Autowired
-    public CompositionService(CompositionRepository compositionRepository, ItemRepository itemRepository, CompositionItemsRepository compositionItemsRepository) {
-        super(itemRepository);
+    public CompositionService(CompositionRepository compositionRepository,  CompositionItemsRepository compositionItemsRepository) {
         this.compositionRepository = compositionRepository;
         this.compositionItemsRepository = compositionItemsRepository;
     }
 
     @Transactional()
-    public ItemDTO newCompositionWithoutItems(ItemDTO compositionDTO) {
+    public CompositionDTO newCompositionWithoutItems(ItemDTO compositionDTO) {
         compositionDTO.setItemType("COMPOSITION");
-        ItemDTO newCompositionDTO = this.createNew(compositionDTO);
-        return newCompositionDTO;
+        Composition itemEntity = new Composition();
+        itemEntity.setName(compositionDTO.getName());
+        itemEntity.setDescription(compositionDTO.getDescription());
+        itemEntity.setUnitPrice(compositionDTO.getUnitPrice());
+        itemEntity.setSellPrice(compositionDTO.getSellPrice());
+        Composition newItemEntity = compositionRepository.save(itemEntity);
+        return new CompositionDTO(newItemEntity);
     }
 
+    @Transactional(readOnly = true)
+    public List<CompositionDTO> findAllCompositions() {
+        List<Composition> listRepository = this.compositionRepository.findAll();
+        List<CompositionDTO> listDTO = listRepository.stream().map(x -> new CompositionDTO(x, x.getCompositionItemQuantities())).collect(Collectors.toList());
+        return listDTO;
+    }
 
     private void copyCompositionDtoParamsToEntity(CompositionDTO compositionDTO, Composition compositionEntity){
         compositionEntity.setDescription(compositionDTO.getDescription());
