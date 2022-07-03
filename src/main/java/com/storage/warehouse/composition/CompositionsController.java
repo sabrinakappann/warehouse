@@ -23,8 +23,8 @@ public class CompositionsController {
     }
 
     @PostMapping
-    public ResponseEntity<ItemDTO> newComposition(@RequestBody ItemDTO compositionDTO){
-        ItemDTO newCompositionDTO = this.compositionService.newCompositionWithoutItems(compositionDTO);
+    public ResponseEntity<CompositionDTO> newComposition(@RequestBody ItemDTO compositionDTO){
+        CompositionDTO newCompositionDTO = this.compositionService.newCompositionWithoutItems(compositionDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newCompositionDTO.getId()).toUri(); // create new URI from request + the new generated id
         return  ResponseEntity.ok().body(newCompositionDTO); // default 201 code when creating new resource + return id at header
     }

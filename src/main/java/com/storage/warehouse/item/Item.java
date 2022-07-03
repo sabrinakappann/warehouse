@@ -35,7 +35,7 @@ public abstract class Item implements Serializable {
     @Column(name = "ITEM_TYPE", insertable = false, updatable = false) // readonly property
     private String itemType;
     @OneToMany(mappedBy = "item")
-    private Set<CompositionItems> itemCompositionItemQuantities = new HashSet<>();
+    private Set<CompositionItems> compositionItemQuantities = new HashSet<>();
 
     public Item(String name, String description) {
         // Register an item without quantity or price
@@ -100,8 +100,8 @@ public abstract class Item implements Serializable {
         this.sellPrice = sellPrice;
     }
 
-    public Set<CompositionItems> getItemCompositionItemQuantities() {
-        return this.itemCompositionItemQuantities;
+    public Set<CompositionItems> getCompositionItemQuantities() {
+        return compositionItemQuantities;
     }
 
 
