@@ -27,3 +27,13 @@ INSERT INTO composition_item_quantity ( composition_id , item_id , quantity ) VA
 INSERT INTO composition_item_quantity ( composition_id , item_id , quantity ) VALUES (400, 700, 3);
 INSERT INTO composition_item_quantity ( composition_id , item_id , quantity ) VALUES (400, 900, 1);
 INSERT INTO composition_item_quantity ( composition_id , item_id , quantity ) VALUES (400, 110, 1);
+
+INSERT INTO users(email, first_name, last_name, password) VALUES ('dono@gmail.com', 'Dono', 'da Porra Toda', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO users(email, first_name, last_name, password) VALUES ('ze@gmail.com', 'Ze', 'da Silva', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+
+INSERT INTO roles (authority) VALUES ('ROLE_BUYER');
+INSERT INTO roles (authority) VALUES ('ROLE_ADMIN');
+
+INSERT INTO user_roles (user_id, role_id) VALUES (1, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (1, 1);
+INSERT INTO user_roles (user_id, role_id) VALUES (2, 1);
