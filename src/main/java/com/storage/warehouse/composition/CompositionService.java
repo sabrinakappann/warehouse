@@ -38,7 +38,7 @@ public class CompositionService{
     @Transactional(readOnly = true)
     public List<CompositionDTO> findAllCompositions() {
         List<Composition> listRepository = this.compositionRepository.findAll();
-        List<CompositionDTO> listDTO = listRepository.stream().map(x -> new CompositionDTO(x, x.getCompositionCompositionItems())).collect(Collectors.toList());
+        List<CompositionDTO> listDTO = listRepository.stream().map(x -> new CompositionDTO(x, x.getItemsOnCompositions())).collect(Collectors.toList());
         return listDTO;
     }
 

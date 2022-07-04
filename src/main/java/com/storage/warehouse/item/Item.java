@@ -44,7 +44,7 @@ public abstract class Item implements Serializable {
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "item")
-    private Set<CompositionItems> itemCompositionItems = new HashSet<>();
+    private Set<CompositionItems> itemCompositions = new HashSet<>();
 
     public Item(String name, String description) {
         // Register an item without quantity or price
@@ -65,12 +65,12 @@ public abstract class Item implements Serializable {
         this.id = id;
     }
 
-    public Set<CompositionItems> getItemCompositionItems() {
-        return itemCompositionItems;
+    public Set<CompositionItems> getItemCompositions() {
+        return itemCompositions;
     }
 
-    public void setItemCompositionItems(Set<CompositionItems> itemCompositionItems) {
-        this.itemCompositionItems = itemCompositionItems;
+    public void setItemCompositions(Set<CompositionItems> itemCompositions) {
+        this.itemCompositions = itemCompositions;
     }
 
     public String getItemType() {

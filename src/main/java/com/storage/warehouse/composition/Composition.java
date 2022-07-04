@@ -5,7 +5,6 @@ import com.storage.warehouse.compositionItemsQuantities.CompositionItems;
 import com.storage.warehouse.item.Item;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,19 +15,19 @@ public class Composition extends Item {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "composition")
     @JsonManagedReference
-    private Set<CompositionItems> compositionCompositionItems;
+    private Set<CompositionItems> itemsOnCompositions;
 
     public Composition() {
         super();
         this.setItemType("COMPOSITION");
     }
 
-    public Set<CompositionItems> getCompositionCompositionItems() {
-        return this.compositionCompositionItems;
+    public Set<CompositionItems> getItemsOnCompositions() {
+        return this.itemsOnCompositions;
     }
 
-    public void setCompositionCompositionItems(Set<CompositionItems> compositionCompositionItems) {
-        this.compositionCompositionItems = compositionCompositionItems;
+    public void setItemsOnCompositions(Set<CompositionItems> itemsOnCompositions) {
+        this.itemsOnCompositions = itemsOnCompositions;
     }
 
 }

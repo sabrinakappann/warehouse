@@ -7,7 +7,7 @@ import java.util.*;
 
 public class CompositionDTO extends ItemDTO {
 
-    private Set<CompositionItemsDTO> itemQuantitiesDTO = new HashSet<>();
+    private Set<CompositionItemsDTO> itemsOnComposition = new HashSet<>();
 
     public CompositionDTO(Composition compositionEntity){
         super(compositionEntity);
@@ -19,7 +19,7 @@ public class CompositionDTO extends ItemDTO {
         this(compositionEntity);
         this.setItemType("COMPOSITION");
         // converts each Set Item into DTO and add to itemQuantitiesDTO
-        itemQuantities.forEach(c -> this.itemQuantitiesDTO.add(new CompositionItemsDTO(c)));
+        itemQuantities.forEach(c -> this.itemsOnComposition.add(new CompositionItemsDTO(c)));
     }
 
     public CompositionDTO() {
@@ -27,12 +27,12 @@ public class CompositionDTO extends ItemDTO {
         this.setItemType("COMPOSITION");
     }
 
-    public Set<CompositionItemsDTO> getItemQuantitiesDTO() {
-        return this.itemQuantitiesDTO;
+    public Set<CompositionItemsDTO> getItemsOnComposition() {
+        return this.itemsOnComposition;
     }
 
-    public void setItemQuantitiesDTO(Set<CompositionItemsDTO> itemQuantitiesDTO) {
-        this.itemQuantitiesDTO = itemQuantitiesDTO;
+    public void setItemsOnComposition(Set<CompositionItemsDTO> itemsOnComposition) {
+        this.itemsOnComposition = itemsOnComposition;
     }
 
 

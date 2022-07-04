@@ -1,5 +1,6 @@
 package com.storage.warehouse.compositionItemsQuantities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.storage.warehouse.composition.Composition;
 import com.storage.warehouse.item.Item;
 
@@ -7,6 +8,7 @@ import java.io.Serializable;
 
 public class CompositionItemsDTO  implements Serializable {
     private static final Long serialVersionUID = 1L;
+    @JsonIgnore
     private Composition composition;
     private Item item;
     private Integer quantity;
