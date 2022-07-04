@@ -25,8 +25,12 @@ The goal is also ensure the quality of the project by making automatized tests.
 
 
 ### Backend - functionalities to be done to serve the requisites (the order is not mandatory):
-- [X] Create the Item/Component/Compositions base Controller/Model/Data classes
+- Validation and security:
+  - [ ] Users CRUD
+  - [ ] ...
 - BASIC CRUD:
+  - [X] Create the Item/Component/Compositions base Controller/Model/Data classes
+  - [ ] Items Categories
   - CREATE and UPDATE:
     - [X] Create new Components
     - [X] Create new generic Items (if Composition, no items and quantities defined yet)
