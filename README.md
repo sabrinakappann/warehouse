@@ -29,8 +29,8 @@ The goal is also ensure the quality of the project by making automatized tests.
   - [ ] Users CRUD
     - [X] Create new
     - [X] List all
-    - [ ] List by id
-    - [ ] Update
+    - [X] List by id
+    - [X] Update
     - [ ] Delete
   - [ ] ...
 - BASIC CRUD:
