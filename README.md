@@ -44,6 +44,7 @@ The goal is also ensure the quality of the project by making automatized tests.
     - [ ] Spring Cloud OAuth2
       - [ ] AuthorizationServerConfigurerAdapter
       - [ ] ResourceServerConfigurerAdapter
+    - [ ] Change deprecated methods about security/authentication/authorization for better ones
 
   - [ ] ...
 - BASIC CRUD:
