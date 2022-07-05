@@ -28,24 +28,23 @@ The goal is also ensure the quality of the project by making automatized tests.
 - Validation and security:
 - Users:
   - [ ] Users CRUD
-    - [ ] Validators 
+    - [X] Validators
     - [X] Create new
     - [X] List all
     - [X] List by id
     - [X] Update
     - [ ] Delete
     - [ ] Spring security
-      - [ ] Interfaces implementations: 
+      - [ ] Interfaces implementations:
         - [X] UserDetails
         - [ ] UserDetailsService
-
       - [ ] Config class to security: WebSecurityConfigurerAdapter
     - [ ] Autentication
       - [ ] AuthenticationManager
     - [ ] Spring Cloud OAuth2
       - [ ] AuthorizationServerConfigurerAdapter
       - [ ] ResourceServerConfigurerAdapter
-  
+
   - [ ] ...
 - BASIC CRUD:
   - [X] Create the Item/Component/Compositions base Controller/Model/Data classes
