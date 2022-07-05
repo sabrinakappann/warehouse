@@ -1,11 +1,12 @@
-package com.storage.warehouse.errors;
+package com.storage.warehouse.errors.auxiliary;
 
 import com.storage.warehouse.errors.auxiliary.FieldMessage;
+import com.storage.warehouse.errors.auxiliary.StandardError;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ValidationError extends StandardError{
+public class ValidationError extends StandardError {
     private static final long serialVersionUID = 1L;
     private List<FieldMessage> errors = new ArrayList<>();
 

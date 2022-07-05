@@ -1,4 +1,4 @@
-package com.storage.warehouse.errors;
+package com.storage.warehouse.errors.auxiliary;
 
 import java.io.Serializable;
 import java.time.Instant;
