@@ -1,4 +1,4 @@
-package com.storage.warehouse.errors.auxiliary;
+package com.storage.warehouse.errors.validation;
 
 import com.storage.warehouse.errors.auxiliary.FieldMessage;
 import com.storage.warehouse.errors.auxiliary.StandardError;

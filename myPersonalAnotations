@@ -75,3 +75,8 @@ Marca que essa classe lidará com todas exceções que acontecerem nesso control
     @ExceptionHandler(EntityNotFoundException.class) => marca q esse método intercepta excpt do tipo EntityNotFoundException
     return ResponseEntity.status(statusCode).body(error) =>
         => Builder de um novo ResponseEntity com status code personalizado e obj 'error' no body
+
+
+@interface => Define uma nova anotação
+
+implements ConstraintValidator<UserInsertValid, UserInsertDTO> => <tipoAnotação, tipoClasseQRecebeAAnotação>
