@@ -5,7 +5,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import com.storage.warehouse.errors.auxiliary.FieldMessage;
-import com.storage.warehouse.users.entity.User;
+import com.storage.warehouse.users.springSecurity.entity.User;
 import com.storage.warehouse.users.dto.UserInsertDTO;
 import com.storage.warehouse.users.dto.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

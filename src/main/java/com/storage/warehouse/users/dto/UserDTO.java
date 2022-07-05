@@ -1,6 +1,6 @@
 package com.storage.warehouse.users.dto;
 import com.storage.warehouse.roles.dto.RoleDTO;
-import com.storage.warehouse.users.entity.User;
+import com.storage.warehouse.users.springSecurity.entity.User;
 
 import java.io.Serializable;
 import java.util.HashSet;

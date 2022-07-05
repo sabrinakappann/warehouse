@@ -1,6 +1,6 @@
 package com.storage.warehouse.users.dto;
 
-import com.storage.warehouse.users.entity.User;
+import com.storage.warehouse.users.springSecurity.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

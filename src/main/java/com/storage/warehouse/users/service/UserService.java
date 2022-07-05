@@ -7,7 +7,7 @@ import com.storage.warehouse.users.dto.UserDTO;
 import com.storage.warehouse.users.dto.UserInsertDTO;
 import com.storage.warehouse.users.dto.UserRepository;
 import com.storage.warehouse.users.dto.UserUpdateDTO;
-import com.storage.warehouse.users.entity.User;
+import com.storage.warehouse.users.springSecurity.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

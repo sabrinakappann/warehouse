@@ -26,12 +26,26 @@ The goal is also ensure the quality of the project by making automatized tests.
 
 ### Backend - functionalities to be done to serve the requisites (the order is not mandatory):
 - Validation and security:
+- Users:
   - [ ] Users CRUD
+    - [ ] Validators 
     - [X] Create new
     - [X] List all
-    - [ ] List by id
-    - [ ] Update
+    - [X] List by id
+    - [X] Update
     - [ ] Delete
+    - [ ] Spring security
+      - [ ] Interfaces implementations: 
+        - [ ] UserDetails
+        - [ ] UserDetailsService
+
+      - [ ] Config class to security: WebSecurityConfigurerAdapter
+    - [ ] Autentication
+      - [ ] AuthenticationManager
+    - [ ] Spring Cloud OAuth2
+      - [ ] AuthorizationServerConfigurerAdapter
+      - [ ] ResourceServerConfigurerAdapter
+  
   - [ ] ...
 - BASIC CRUD:
   - [X] Create the Item/Component/Compositions base Controller/Model/Data classes
