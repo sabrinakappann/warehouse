@@ -47,3 +47,6 @@ DTO
 
 
 Classes resources = meus controllers
+
+
+SecurityConfig => Created to allow access to project endpoints after add spring security

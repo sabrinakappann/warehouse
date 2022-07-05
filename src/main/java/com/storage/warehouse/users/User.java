@@ -1,4 +1,6 @@
-package com.storage.warehouse.roles;
+package com.storage.warehouse.users;
+
+import com.storage.warehouse.roles.Role;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -17,7 +19,7 @@ public class User {
     @Column(unique = true)
     private String email;
     private String password;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER) // always get roles when searching for an user (needed for Spring security)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
