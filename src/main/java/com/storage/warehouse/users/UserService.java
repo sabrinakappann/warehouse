@@ -1,5 +1,5 @@
 package com.storage.warehouse.users;
-import com.storage.warehouse.exceptions.ResourceNotFoundException;
+import com.storage.warehouse.errors.exceptions.ResourceNotFoundException;
 import com.storage.warehouse.roles.Role;
 import com.storage.warehouse.roles.RoleDTO;
 import com.storage.warehouse.roles.RoleRepository;

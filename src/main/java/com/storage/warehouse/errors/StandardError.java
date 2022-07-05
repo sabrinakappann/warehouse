@@ -1,11 +1,11 @@
-package com.storage.warehouse.exceptions;
+package com.storage.warehouse.errors;
 
 import java.io.Serializable;
 import java.time.Instant;
 
 public class StandardError implements Serializable {
     private static final long serialVersionUID = 1L;
-    // Class to return exceptions messages at default http response json
+    // Class to return errors messages at default http response json
 
     private Instant timestamp;
     private Integer status; // status code
