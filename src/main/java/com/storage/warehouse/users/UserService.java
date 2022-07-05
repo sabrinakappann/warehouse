@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service // dependency injection (@Component = generic)
@@ -54,4 +55,10 @@ public class UserService {
 
     }
 
+    @Transactional(readOnly = true)
+    public UserDTO findById(Long id) {
+        Optional<User> obj = userRepository.findById(id); // returns an Optional object
+        User userEntity = obj.get();
+        return new UserDTO(userEntity);
+    }
 }

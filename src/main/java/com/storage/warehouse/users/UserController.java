@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -21,11 +22,15 @@ public class UserController {
     }
 
     @PostMapping // no need to specify path
-    public ResponseEntity<UserDTO> createNewUser(@RequestBody UserInsertDTO userInsertDTO){
+    public ResponseEntity<UserDTO> createNewUser(@Valid @RequestBody UserInsertDTO userInsertDTO){
         UserDTO userDTO = userService.createNew(userInsertDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(userDTO.getId()).toUri(); // create new URI from request + the new generated id
         return  ResponseEntity.ok().body(userDTO); // default 201 code when creating new resource + return id at header
-
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<UserDTO> findById(@PathVariable Long id){ // @PathVariable var name must be equals to {id}
+        UserDTO userDTO = userService.findById(id);
+        return ResponseEntity.ok().body(userDTO);
+    }
 }
