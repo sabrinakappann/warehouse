@@ -1,9 +1,6 @@
 package com.storage.warehouse.componentTests.componentControllerTests;
 
-import com.storage.warehouse.component.ComponentController;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import com.storage.warehouse.component.controller.ComponentController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
