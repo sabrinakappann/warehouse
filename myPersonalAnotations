@@ -80,3 +80,10 @@ Marca que essa classe lidará com todas exceções que acontecerem nesso control
 @interface => Define uma nova anotação
 
 implements ConstraintValidator<UserInsertValid, UserInsertDTO> => <tipoAnotação, tipoClasseQRecebeAAnotação>
+
+
+findById != getReferenceById
+    -> findById = traz dados do BD
+    -> getReferenceById = não acessa BD; traz obj provisório com aquele id
+
+var uriVars = request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE) => pega parametros da requisição

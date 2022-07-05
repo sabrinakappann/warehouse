@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -28,16 +29,16 @@ public class UserDTO implements Serializable {
 
     public UserDTO(Long id, String firstName, String lastName, String email) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setEmail(email);
     }
 
     public UserDTO(User entity) {
-        id = entity.getId();
-        firstName = entity.getFirstName();
-        lastName = entity.getLastName();
-        email = entity.getEmail();
+        this.id = entity.getId();
+        this.setFirstName(entity.getFirstName());
+        this.setLastName(entity.getLastName());
+        this.setEmail(entity.getEmail());
         entity.getRoles().forEach(role -> this.roles.add(new RoleDTO(role)));
     }
 
@@ -69,7 +70,7 @@ public class UserDTO implements Serializable {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail( @Valid String email) {
         this.email = email;
     }
 
