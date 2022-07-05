@@ -1,4 +1,5 @@
 package com.storage.warehouse.users;
+import com.storage.warehouse.exceptions.EntityNotFoundException;
 import com.storage.warehouse.roles.Role;
 import com.storage.warehouse.roles.RoleDTO;
 import com.storage.warehouse.roles.RoleRepository;
@@ -58,7 +59,7 @@ public class UserService {
     @Transactional(readOnly = true)
     public UserDTO findById(Long id) {
         Optional<User> obj = userRepository.findById(id); // returns an Optional object
-        User userEntity = obj.get();
+        User userEntity = obj.orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado!"));
         return new UserDTO(userEntity);
     }
 }
