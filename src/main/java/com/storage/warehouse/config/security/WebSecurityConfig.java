@@ -1,4 +1,4 @@
-package com.storage.warehouse.security;
+package com.storage.warehouse.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

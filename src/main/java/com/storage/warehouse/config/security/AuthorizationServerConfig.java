@@ -1,4 +1,4 @@
-package com.storage.warehouse.security;
+package com.storage.warehouse.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -43,7 +43,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 secret(passwordEncoder.encode("DNEKCAB-ORP-ANIRBAS")).
                 scopes("read", "write").
                 authorizedGrantTypes("password").
-                accessTokenValiditySeconds(60);
+                accessTokenValiditySeconds(320);
     }
 
     @Override
