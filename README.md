@@ -35,9 +35,9 @@ The goal is also ensure the quality of the project by making automatized tests.
     - [X] Update
     - [ ] Delete
     - [ ] Spring security
-      - [ ] Interfaces implementations:
+      - [X] Interfaces implementations:
         - [X] UserDetails
-        - [ ] UserDetailsService
+        - [X] UserDetailsService
       - [ ] Config class to security: WebSecurityConfigurerAdapter
     - [ ] Autentication
       - [ ] AuthenticationManager

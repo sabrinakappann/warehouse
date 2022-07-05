@@ -75,10 +75,15 @@ public class User implements UserDetails, Serializable {
         this.email = email;
     }
 
+
+    /*Collection<? extends GrantedAuthority>. So, you ArrayList will be accepted if it's an
+        ArrayList<Something>, where Something is GrantedAuthority or a class which implements GrantedAuthority.*/
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // converter cada item da role em tipo GrantedAuthority
+        // converter cada item da role em tipo SimpleGrantedAuthority, que implementa GrantedAuthority
         return this.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getAuthority())).collect(Collectors.toList());
+        // stream() here is created to use map to apply lambda function and create the needed object from list
+        //collect(Collectors.toList()); => makes the return time to a list (wich implements Collection)
     }
 
     public String getPassword() {
