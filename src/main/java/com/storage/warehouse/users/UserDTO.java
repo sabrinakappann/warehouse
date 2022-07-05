@@ -7,14 +7,18 @@ import java.util.Set;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 
 public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
+    @NotBlank(message = "Primeiro nome não pode ser vazio!")
     private String firstName;
     private String lastName;
+    @Pattern(regexp = "^(.+)@(\\\\S+)$", message = "Email inválido!")
     private String email;
 
     Set<RoleDTO> roles = new HashSet<>();

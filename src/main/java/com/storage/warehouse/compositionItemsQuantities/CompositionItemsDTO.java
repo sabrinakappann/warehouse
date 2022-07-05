@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.storage.warehouse.composition.Composition;
 import com.storage.warehouse.item.Item;
 
+import javax.validation.constraints.Positive;
 import java.io.Serializable;
 
 public class CompositionItemsDTO  implements Serializable {
@@ -11,6 +12,7 @@ public class CompositionItemsDTO  implements Serializable {
     @JsonIgnore
     private Composition composition;
     private Item item;
+    @Positive(message = "Quantidade deve ser maior que zero!")
     private Integer quantity;
     private CompositionItemsId id;
 

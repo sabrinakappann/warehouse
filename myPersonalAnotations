@@ -1,6 +1,8 @@
 DTO -> transfer data between controllers and service (no acess to DB)
 Entities -> used by services to acess/controll data
 
+Serializable -> can be transformed in bytes and, for example, turns into a json
+
 MVC Template Engine vs WebServices:
 
     MVC Template Engine:
@@ -50,3 +52,26 @@ Classes resources = meus controllers
 
 
 SecurityConfig => Created to allow access to project endpoints after add spring security
+
+
+********* ANOTAR DTO E COLOCAR @Valid ANTES DO @RequestBody!!
+Difference Between @NotNull, @NotEmpty, and @NotBlank Constraints in Bean Validation
+VER EXEMPLOS DE TESTES AUTOMATIZADOS: https://www.baeldung.com/java-bean-validation-not-null-empty-blank
+@NotNull = não permite String null
+@NotEmpty = não permite null nem ""
+@NotBlank = não permite null nem "" nem com x espaços dentro
+
+Validação de CPF, email etc:
+@Pattern(regexp = "...") // pegar regex de alguma fonte
+********* ANOTAR DTO E COLOCAR @Valid ANTES DO @RequestBody!!
+
+
+extends RuntimeException => not mandatory to deal with
+User userEntity = obj.orElseThrow(); => if Optional obj don't return an User, throw exception
+obj.orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado!")); => () -> é fç lambda vazia p levar a exceção
+
+@ControllerAdvice
+Marca que essa classe lidará com todas exceções que acontecerem nesso controller que for colocada
+    @ExceptionHandler(EntityNotFoundException.class) => marca q esse método intercepta excpt do tipo EntityNotFoundException
+    return ResponseEntity.status(statusCode).body(error) =>
+        => Builder de um novo ResponseEntity com status code personalizado e obj 'error' no body

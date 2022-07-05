@@ -1,5 +1,5 @@
 package com.storage.warehouse.users;
-import com.storage.warehouse.exceptions.EntityNotFoundException;
+import com.storage.warehouse.exceptions.ResourceNotFoundException;
 import com.storage.warehouse.roles.Role;
 import com.storage.warehouse.roles.RoleDTO;
 import com.storage.warehouse.roles.RoleRepository;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -59,7 +58,7 @@ public class UserService {
     @Transactional(readOnly = true)
     public UserDTO findById(Long id) {
         Optional<User> obj = userRepository.findById(id); // returns an Optional object
-        User userEntity = obj.orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado!"));
+        User userEntity = obj.orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado!"));
         return new UserDTO(userEntity);
     }
 }
