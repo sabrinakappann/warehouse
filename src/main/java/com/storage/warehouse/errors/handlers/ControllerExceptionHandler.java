@@ -1,8 +1,8 @@
 package com.storage.warehouse.errors.handlers;
 
 import com.storage.warehouse.errors.auxiliary.StandardError;
+import com.storage.warehouse.errors.auxiliary.ValidationError;
 import com.storage.warehouse.errors.exceptions.MyIllegalArgumentException;
-import com.storage.warehouse.errors.validation.ValidationError;
 import com.storage.warehouse.errors.exceptions.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

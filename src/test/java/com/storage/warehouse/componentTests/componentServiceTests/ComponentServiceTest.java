@@ -1,6 +1,6 @@
 package com.storage.warehouse.componentTests.componentServiceTests;
 
-import com.storage.warehouse.component.service.ComponentService;
+import com.storage.warehouse.component.ComponentService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
