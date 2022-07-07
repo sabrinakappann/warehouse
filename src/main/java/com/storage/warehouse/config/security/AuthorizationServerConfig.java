@@ -1,6 +1,7 @@
 package com.storage.warehouse.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -28,6 +29,15 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Value("${security.oauth2.client.client-id}")
+    private String clientId;
+
+    @Value("${security.oauth2.client.client-secret}")
+    private String clientSecret;
+
+
+    @Value("${jwt.duration}")
+    private Integer jwtDuration;
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -38,12 +48,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         // defines client data and how will it be the autorization
         // configure app key (secret)
-        clients.inMemory().
-                withClient("warehouse").
-                secret(passwordEncoder.encode("DNEKCAB-ORP-ANIRBAS")).
-                scopes("read", "write").
-                authorizedGrantTypes("password").
-                accessTokenValiditySeconds(320);
+        clients.inMemory()
+                .withClient(clientId)
+                .secret(passwordEncoder.encode(clientSecret))
+                .scopes("read", "write")
+                .authorizedGrantTypes("password")
+                .accessTokenValiditySeconds(jwtDuration);
     }
 
     @Override
