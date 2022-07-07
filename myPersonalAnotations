@@ -91,3 +91,16 @@ var uriVars = request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBU
 
 Autenticação = sabe quem vc é
 Autorização = Autenticação + pode acessar o recurso
+
+
+
+Collection<? extends GrantedAuthority>. So, you ArrayList will be accepted if it's an
+ArrayList<Something>, where Something is GrantedAuthority or a class which implements GrantedAuthority,
+like the SimpleGrantedAuthority Class.
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities()
+
+
+stream() =>  takes input from the Collections or Arrays and allows to apply different methods/lambda expressions on them
+
+spring.profiles.active=${APP_PROFILE:test} => se env. var APP_PROFILE n tiver definida, pega o valor padrão 'test'
