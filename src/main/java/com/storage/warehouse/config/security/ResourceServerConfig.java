@@ -16,9 +16,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Autowired
     JwtTokenStore jwtTokenStore;
     private static final String BASEURL = "/api/v1/";
-    private static final String[] PUBLIC = {"/oauth/token"};
-    private static final String[] BUYER_OR_ADMIN = {BASEURL + "components/**", BASEURL + "items/**", BASEURL + "compositions/**"};
-    private static final String[] ADMIN = {BASEURL + "users/**"};
+    private static final String[] LOGIN = {"/oauth/token"};
+    private static final String[] STOCK = {BASEURL + "components/**", BASEURL + "items/**", BASEURL + "compositions/**"};
+    private static final String[] USERS = {BASEURL + "users/**"};
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         resources.tokenStore(jwtTokenStore); // ResourceServer can no decode token
@@ -27,13 +27,13 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(PUBLIC)
-                .permitAll()
-                .antMatchers(HttpMethod.GET, BUYER_OR_ADMIN).permitAll()
-                .antMatchers(BUYER_OR_ADMIN).hasAnyRole("ROLE_ADMIN", "ROLE_BUYER") // dont need to put ROLE_ before
-                .antMatchers(ADMIN).hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST, BUYER_OR_ADMIN).hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT, BUYER_OR_ADMIN).hasRole("ADMIN")
-                .anyRequest().authenticated(); // any other endpoint, it needs to be authenticated
+                .antMatchers(LOGIN).permitAll()
+                .antMatchers(HttpMethod.GET, STOCK).permitAll()
+                .antMatchers(HttpMethod.POST, STOCK).hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, STOCK).hasRole("ADMIN")
+                .antMatchers(STOCK).hasAnyRole("ADMIN", "BUYER") // don't need to put ROLE_ before
+                .antMatchers(USERS).hasRole("ADMIN");
+                //.anyRequest().authenticated(); // any other endpoint, it needs to be authenticated
+
     }
 }
