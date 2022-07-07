@@ -39,12 +39,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         }
         http.authorizeRequests()
                 .antMatchers(LOGIN).permitAll()
-                .antMatchers(HttpMethod.GET, STOCK).permitAll()
+                .antMatchers(HttpMethod.GET, STOCK).hasAnyRole("ADMIN", "BUYER") // don't need to put ROLE_ before
                 .antMatchers(HttpMethod.POST, STOCK).hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, STOCK).hasRole("ADMIN")
-                .antMatchers(STOCK).hasAnyRole("ADMIN", "BUYER") // don't need to put ROLE_ before
                 .antMatchers(USERS).hasRole("ADMIN");
-                //.anyRequest().authenticated(); // any other endpoint, it needs to be authenticated
-
     }
 }
