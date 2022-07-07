@@ -1,6 +1,7 @@
 package com.storage.warehouse.users.validation;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
@@ -14,6 +15,9 @@ public class UserInsertValidator implements ConstraintValidator<UserInsertValid,
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private HttpServletRequest request;
 
     @Override
     public void initialize(UserInsertValid ann) {

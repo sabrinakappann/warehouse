@@ -1,4 +1,5 @@
 package com.storage.warehouse.users.service;
+import com.storage.warehouse.errors.exceptions.MyIllegalArgumentException;
 import com.storage.warehouse.errors.exceptions.ResourceNotFoundException;
 import com.storage.warehouse.roles.entity.Role;
 import com.storage.warehouse.roles.dto.RoleDTO;
@@ -17,6 +18,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -53,10 +55,14 @@ public class UserService implements UserDetailsService {
     @Transactional
     public UserDTO createNew(UserInsertDTO userDTO) {
         User userEntity = new User();
-        this.copyFromDtoToEntity(userDTO, userEntity);
-        User newUserEntity = userRepository.save(userEntity);
-        return new UserDTO(newUserEntity);
-
+        try{
+            userEntity.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
+        }catch (IllegalArgumentException e){
+            throw new MyIllegalArgumentException("Password", e.getMessage());
+        }
+            this.copyFromDtoToEntity(userDTO, userEntity);
+            User newUserEntity = userRepository.save(userEntity);
+            return new UserDTO(newUserEntity);
     }
 
     @Transactional(readOnly = true)
@@ -81,21 +87,31 @@ public class UserService implements UserDetailsService {
     }
 
     private void copyFromDtoToEntity(UserDTO dto, User entity){
-        entity.setFirstName(dto.getFirstName());
-        entity.setLastName(dto.getLastName());
-        entity.setEmail(dto.getEmail());
-        entity.setId(dto.getId());
-        entity.getRoles().clear();
-        for(RoleDTO roleDTO : dto.getRoles()){
-            Role role = roleRepository.getReferenceById(roleDTO.getId());
-            entity.getRoles().add(role);
+        String wrongParameter = "";
+        try {
+            wrongParameter = "First name";
+            entity.setFirstName(dto.getFirstName());
+            wrongParameter = "Last name";
+            entity.setLastName(dto.getLastName());
+            wrongParameter = "Email";
+            entity.setEmail(dto.getEmail());
+            entity.setId(dto.getId());
+            entity.getRoles().clear();
+            for(RoleDTO roleDTO : dto.getRoles()){
+                try {
+                    Role role = roleRepository.getReferenceById(roleDTO.getId());
+                    entity.getRoles().add(role);
+                }catch (EntityNotFoundException e){
+                    throw new ResourceNotFoundException("Role " + roleDTO.getAuthority() + " id " + roleDTO.getId().toString() + " não encontrada!");
+                }
+
+            }
+        }catch (IllegalArgumentException e){
+            throw new MyIllegalArgumentException(wrongParameter, e.getMessage());
         }
+
     }
 
-    private void copyFromDtoToEntity(UserInsertDTO dto, User entity){
-        this.copyFromDtoToEntity(dto, entity);
-        entity.setPassword(bCryptPasswordEncoder.encode(dto.getPassword()));
-    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
